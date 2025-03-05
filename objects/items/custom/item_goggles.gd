@@ -62,7 +62,7 @@ func on_timeout(ui: BattleUI) -> void:
 func on_turn_complete(_gags: Array[ToonAttack]) -> void:
 	if is_instance_valid(timer) and not timer.is_queued_for_deletion():
 		var player = Util.get_player()
-
+		THIS_ROUND_TIME = player.stats.remaining_time
 	# Move to pacelover boost? idk
 		if player.stats.speed_up != 0:
 			if THIS_ROUND_TIME > 7:
