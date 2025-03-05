@@ -27,6 +27,8 @@ func _process(delta: float) -> void:
 	else:
 		var player = Util.get_player()
 		battle_speed = SettingsFile.SpeedOptions[SaveFileService.settings_file.get('battle_speed_idx')]
+		speed = player.stats.speed
+		
 		if BattleService.ongoing_battle != null:
 			damage = BattleService.ongoing_battle.battle_stats[Util.get_player()].damage
 			defense = BattleService.ongoing_battle.battle_stats[Util.get_player()].defense
@@ -37,6 +39,7 @@ func _process(delta: float) -> void:
 			defense = player.stats.defense
 			evasiveness = player.stats.defense
 			luck = player.stats.luck
+			
 		squirt = player.stats.gags_unlocked["Squirt"]
 		trap = player.stats.gags_unlocked["Trap"]
 		lure = player.stats.gags_unlocked["Lure"]
@@ -46,11 +49,13 @@ func _process(delta: float) -> void:
 		
 	text = "fps: %s 
 	battle speed: %.2fx 
+	
 	damage: %.2f 
 	defense: %.2f
 	evasiveness: %.2f
 	luck: %.2f
 	speed: %.2f
+	
 	squirt: lv.%.0f
 	trap: lv.%.0f
 	lure: lv.%.0f
