@@ -16,8 +16,12 @@ func start(time: float) -> void:
 	timer.one_shot = true
 	add_child(timer)
 	timer.start(time)
+	if Util.get_player().stats.speed_up != 0:
+		Globals.PACE_DAMAGE_BOOST = true
 	timer.timeout.connect(
 	func(): 
+		Globals.PACE_DAMAGE_BOOST = false
+		print("timed out :(")
 		s_timeout.emit()
 		queue_free()
 	)

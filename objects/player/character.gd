@@ -33,6 +33,11 @@ func flippy(player: Player):
 	player.stats.gags_unlocked['Throw'] = 1
 	player.stats.gag_effectiveness['Throw'] *= 1.05
 	player.stats.luck = 1.05
+	
+func pacelover2000(player: Player):
+	for track in player.stats.gags_unlocked.keys():
+		player.stats.gags_unlocked[track] = 1
+	player.stats.luck = 1.10
 
 ## Saved stats for player
 const RANDOM_CHAR_ITEM_COUNT := 2
