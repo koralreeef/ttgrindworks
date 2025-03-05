@@ -12,6 +12,7 @@ var lure = 0
 var sound = 0
 var throw = 0
 var drop = 0
+var battle_speed = 0
 var loadout = GagLoadout
 
 func _ready() -> void:
