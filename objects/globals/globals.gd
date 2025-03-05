@@ -26,7 +26,8 @@ const TOON_UNLOCK_ORDER : Array[PlayerCharacter] = [
 	preload('res://objects/player/characters/julius_wheezer.tres'),
 	preload('res://objects/player/characters/barnacle_bessie.tres'),
 	preload('res://objects/player/characters/moe_zart.tres'),
-	preload('res://objects/player/characters/testchar.tres')
+	preload('res://objects/player/characters/testchar.tres'),
+	preload('res://objects/player/characters/goggles.tres')
 ]
 
 ## Global Cog Pools
@@ -370,6 +371,13 @@ var FLOOR_VARIANTS := LazyLoader.defer_array([
 	"res://scenes/game_floor/floor_variants/base_floors/cog_golf_course.tres",
 ])
 
+var BOSS_FLOOR_VARIANTS := LazyLoader.defer_array([
+	"res://scenes/game_floor/department_floors/rooms_sell.tres",
+	"res://scenes/game_floor/department_floors/rooms_cash.tres",
+	"res://scenes/game_floor/department_floors/rooms_law.tres",
+	"res://scenes/game_floor/department_floors/rooms_boss.tres",
+])
+
 ## Common Scenes
 var DUST_CLOUD := LazyLoader.defer('res://objects/props/etc/dust_cloud/dust_cloud.tscn')
 
@@ -398,5 +406,6 @@ func on_floor_start(game_floor: GameFloor) -> void:
 	var floor_name := game_floor.floor_variant.floor_name.to_lower()
 	if floor_name.contains('haunted') or floor_name.contains('faulty'):
 		s_secret_floor.emit()
-
+		
 const MaxToonupConsumables := 3
+var PACE_DAMAGE_BOOST := false

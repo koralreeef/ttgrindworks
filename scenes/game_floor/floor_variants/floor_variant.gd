@@ -110,16 +110,36 @@ func get_anomalies() -> Array[Script]:
 		mod_array.remove_at(mod_array.find(new_mod))
 
 	return mods
-
+	
+func generate_start_anomaly() -> Script:
+	var pace_mod: Script = Util.universal_load("res://scenes/game_floor/floor_modifiers/scripts/anomalies/floor_mod_pace.gd")
+	print("loading starting anomalies...")
+	
+	return pace_mod
+		
+func apply_starting_details() -> void: 
+	if Util.get_player() and Util.get_player().stats and Util.get_player().stats.speed_up != 0:
+		anomalies.push_front(generate_start_anomaly())
+		
+func first_level_details() -> void: 
+	if Util.get_player() and Util.get_player().stats and Util.get_player().stats.speed_up != 0:
+		Globals.PACE_DAMAGE_BOOST = true
+		anomalies.append(generate_start_anomaly())
+		anomaly_count = modifiers.size()
+		
+		for anomaly: Script in anomalies:
+			modifiers.append(anomaly)
+		
 func randomize_details() -> void:
 	clear()
 	
 	anomalies = get_anomalies()
+	apply_starting_details()
 	anomaly_count = anomalies.size()
 
 	for anomaly: Script in anomalies:
 		modifiers.append(anomaly)
-	
+
 	floor_difficulty = Util.floor_number + 1
 	level_range.x = LEVEL_RANGES[floor_difficulty][0]
 	level_range.y = LEVEL_RANGES[floor_difficulty][1]

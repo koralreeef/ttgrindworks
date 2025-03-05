@@ -91,9 +91,17 @@ func gags_selected(gags: Array[ToonAttack]):
 	begin_turn()
 
 func apply_battle_speed() -> void:
-	# Set the engine speed scale to the battle speed setting
-	Engine.time_scale = SettingsFile.SpeedOptions[SaveFileService.settings_file.get('battle_speed_idx')]
-
+	# lmao
+	if player.stats.speed_up != 0:
+		if player.stats.battle_speed < 4:
+			player.stats.battle_speed = player.stats.battle_speed * 1.03
+			if player.stats.battle_speed > 4: player.stats.battle_speed = 4
+		Engine.time_scale = player.stats.battle_speed
+		print('time is at %.2fx' % Engine.time_scale)
+	else:
+		# Set the engine speed scale to the battle speed setting
+		Engine.time_scale = SettingsFile.SpeedOptions[SaveFileService.settings_file.get('battle_speed_idx')]
+		
 func revert_battle_speed() -> void:
 	Engine.time_scale = 1.0
 

@@ -118,9 +118,10 @@ func gag_hovered(gag: BattleAction):
 	right_panel.preview_gag(gag)
 
 func complete_turn():
+	if Globals.PACE_DAMAGE_BOOST == true:
+		print("damage boost for ending turn!")
 	# Reset turns
 	turn = 0
-	
 	var gag_order := sort_gags(selected_gags)
 	
 	s_turn_complete.emit(gag_order)

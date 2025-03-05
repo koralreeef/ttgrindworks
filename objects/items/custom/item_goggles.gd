@@ -2,14 +2,15 @@ extends ItemScript
 
 # This item runs a x second battle timer on every round
 # And shuffles the order of gags on the menu
+const pace_multi := 0.965
+var ROUND_TIME := 10.0
 
-const ROUND_TIME := 10.0
 const TIMER_ANCHOR := Control.PRESET_TOP_RIGHT
 const SFX_TIMER = preload("res://audio/sfx/objects/moles/MG_sfx_travel_game_bell_for_trolley.ogg")
 
 ## Battle Timer created by Util
 var timer: GameTimer
-
+var loadout : GagLoadout
 
 func on_collect(_item: Item, _model: Node3D) -> void:
 	setup()
@@ -45,7 +46,23 @@ func on_track_refresh(element: Control) -> void:
 
 ## Runs the battle timer at the beginning of each round
 func on_round_reset(manager: BattleManager) -> void:
-	timer = Util.run_timer(ROUND_TIME, TIMER_ANCHOR)
+	var player = Util.get_player()
+	var THIS_ROUND_TIME = ROUND_TIME
+	# Move to pacelover boost? idk
+	if player.stats.speed_up != 0:
+		THIS_ROUND_TIME = player.stats.remaining_time
+		if THIS_ROUND_TIME > 7:
+			# avoid decreasing timer if a battle stops
+			if BattleService.ongoing_battle:
+				player.stats.remaining_time = player.stats.remaining_time * 0.98
+				if player.stats.remaining_time < 7:
+					player.stats.remaining_time = 7.00
+				THIS_ROUND_TIME = player.stats.remaining_time
+				print("new round time: %.2f" % THIS_ROUND_TIME)
+			else: 
+				return
+	 
+	timer = Util.run_timer(THIS_ROUND_TIME, TIMER_ANCHOR)
 	timer.timer.timeout.connect(on_timeout.bind(manager.battle_ui))
 	timer.reparent(manager.battle_ui)
 	if manager.cogs.size() > 0:

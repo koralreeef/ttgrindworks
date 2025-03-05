@@ -97,6 +97,8 @@ func generate_floor() -> void:
 	Util.floor_type = floor_rooms
 	# Randomly decide 40% - 60% battle rooms 
 	battle_ratio = 0.4 + (0.1 * float(RandomService.randi_channel('battle_ratio') % 3))
+	if Util.get_player().stats.speed_up != 0:
+		battle_ratio = 0.8
 	var total_rooms = int((room_count - 2) / 2)
 	var total_battles := int(total_rooms * battle_ratio)
 	rooms_remaining = [total_battles, total_rooms - total_battles]
