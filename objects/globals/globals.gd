@@ -21,13 +21,13 @@ var suits := LazyLoader.defer_dict({
 
 ## Player Characters
 const TOON_UNLOCK_ORDER : Array[PlayerCharacter] = [
+	preload('res://objects/player/characters/goggles.tres'),
 	preload('res://objects/player/characters/flippy.tres'),
 	preload('res://objects/player/characters/clerk_clara.tres'),
 	preload('res://objects/player/characters/julius_wheezer.tres'),
 	preload('res://objects/player/characters/barnacle_bessie.tres'),
 	preload('res://objects/player/characters/moe_zart.tres'),
 	preload('res://objects/player/characters/testchar.tres'),
-	preload('res://objects/player/characters/goggles.tres')
 ]
 
 ## Global Cog Pools
@@ -409,3 +409,4 @@ func on_floor_start(game_floor: GameFloor) -> void:
 		
 const MaxToonupConsumables := 3
 var PACE_DAMAGE_BOOST := false
+var PITCH_MULTIPLIER := 1.0

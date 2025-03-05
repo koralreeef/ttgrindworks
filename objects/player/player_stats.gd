@@ -46,6 +46,7 @@ signal s_gained_money
 @export var speed_up := 0
 @export var battle_speed := 1.75
 @export var remaining_time := 11.0
+@export var pitch := 1.0
 @export var extra_lives := 0:
 	set(x):
 		extra_lives = x

@@ -14,6 +14,9 @@ var lure = 0
 var sound = 0
 var throw = 0
 var drop = 0
+var timescale = 0
+var pitch = 0
+var damage_boost = 0
 var loadout = GagLoadout
 
 func _ready() -> void:
@@ -23,13 +26,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var fps = str(Engine.get_frames_per_second())
 	if not Util.get_player():
+		print("couldn't find player")
 		return
 	else:
 		var player = Util.get_player()
 		remaining_time = player.stats.remaining_time
 		battle_speed = player.stats.battle_speed
 		speed = player.stats.speed
-		if BattleService.ongoing_battle:
+		timescale = Engine.time_scale
+		pitch = player.stats.pitch
+		damage_boost = Globals.PACE_DAMAGE_BOOST
+		if BattleService.ongoing_battle != null:
 			damage = BattleService.ongoing_battle.battle_stats[Util.get_player()].damage
 			defense = BattleService.ongoing_battle.battle_stats[Util.get_player()].defense
 			evasiveness = BattleService.ongoing_battle.battle_stats[Util.get_player()].evasiveness
@@ -48,7 +55,10 @@ func _process(delta: float) -> void:
 		
 	text = "fps: %s 
 	battle speed: %.2fx 
+	timescale: %.2fx
+	pitch: %.2fx
 	current timer: %.2fs 
+	boost: %s
 	damage: %.2f 
 	defense: %.2f
 	evasiveness: %.2f
@@ -62,7 +72,10 @@ func _process(delta: float) -> void:
 	drop: lv.%.0f" % [
 		fps,
 		battle_speed, 
+		timescale,
+		pitch,
 		remaining_time,
+		damage_boost,
 		damage,
 		defense,
 		evasiveness,

@@ -46,9 +46,14 @@ func _ready():
 
 func start_floor(floor_var: FloorVariant):
 	# replacing some time back on new floor
-	player.stats.battle_speed = player.stats.battle_speed * 0.75
+	player.stats.battle_speed *= 0.75
 	if(player.stats.battle_speed < 2): player.stats.battle_speed = 2
-	player.stats.remaining_time = player.stats.remaining_time + 3
+	player.stats.remaining_time += 3
+	player.stats.pitch *= 0.98
+	Engine.time_scale *= 0.90
+	if(Engine.time_scale < 1): Engine.time_scale = 1
+	if(player.stats.pitch < 1): player.stats.pitch = 1
+	AudioManager.tween_music_pitch(0.5, Engine.time_scale)
 	print("regenerating some time back... battle speed: %.2fx remaining_time: %.2f"%[player.stats.battle_speed, player.stats.remaining_time])
 	elevator.animator.play('open')
 	player.turn_to_position($Outside.global_position, 1.5)

@@ -17,6 +17,3 @@ func round_started(actions : Array[BattleAction]) -> void:
 			if action is ToonAttack:
 				action.damage *= DAMAGE_BOOST
 				action.store_boost_text("First Strike!", Color(1, 0.431, 0))
-	if Globals.PACE_DAMAGE_BOOST == true:
-		print("damage boost for ending turn!")
-		BattleService.ongoing_battle.battle_stats[Util.get_player()].damage += 0.05
