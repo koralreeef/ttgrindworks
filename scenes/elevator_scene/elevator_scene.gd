@@ -45,6 +45,11 @@ func _ready():
 	get_next_floors()
 
 func start_floor(floor_var: FloorVariant):
+	# replacing some time back on new floor
+	player.stats.battle_speed = player.stats.battle_speed * 0.75
+	if(player.stats.battle_speed < 2): player.stats.battle_speed = 2
+	player.stats.remaining_time = player.stats.remaining_time + 3
+	print("regenerating some time back... battle speed: %.2fx remaining_time: %.2f"%[player.stats.battle_speed, player.stats.remaining_time])
 	elevator.animator.play('open')
 	player.turn_to_position($Outside.global_position, 1.5)
 	$ElevatorUI.hide()
@@ -75,6 +80,8 @@ func get_next_floors() -> void:
 			new_floor = new_floor.alt_floor.duplicate()
 		
 		new_floor.randomize_details()
+		new_floor.apply_starting_details()
+		new_floor.room_count = 8
 		while not new_floor.reward or new_floor.reward.item_name in taken_items:
 			new_floor.randomize_item()
 		next_floors.append(new_floor)

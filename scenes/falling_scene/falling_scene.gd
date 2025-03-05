@@ -137,6 +137,9 @@ func end_scene() -> void:
 func get_first_floor() -> FloorVariant:
 	var floor_var : FloorVariant = RandomService.array_pick_random('floors', Globals.FLOOR_VARIANTS.load()).duplicate()
 	# Guarantee 0 difficulty floor to start
+	Util.get_player().stats.battle_speed = SettingsFile.SpeedOptions[SaveFileService.settings_file.get('battle_speed_idx')]
+	floor_var.first_level_details()
+	floor_var.room_count = 6
 	floor_var.floor_difficulty = 0
 	floor_var.level_range = Vector2i(1,2)
 	return floor_var

@@ -43,6 +43,9 @@ signal s_gained_money
 @export var squirt_defense_boost := 0.8
 @export var drop_aftershock_round_boost := 0
 @export var anomaly_boost := 0
+@export var speed_up := 0
+@export var battle_speed := 1.75
+@export var remaining_time := 11.0
 @export var extra_lives := 0:
 	set(x):
 		extra_lives = x

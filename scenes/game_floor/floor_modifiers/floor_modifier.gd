@@ -9,7 +9,6 @@ enum ModType {
 
 var game_floor: GameFloor
 
-
 ## Do not override.
 ## Unless you really want to :)
 func initialize(new_floor: GameFloor) -> void:

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://w2jk7lsyrodm"]
+
+[ext_resource type="Script" path="res://objects/items/custom/item_pacelover_boost.gd" id="1_mgaqa"]
+[ext_resource type="Script" path="res://objects/items/classes/item.gd" id="2_5wtyg"]
+
+[resource]
+script = ExtResource("2_5wtyg")
+qualitoon = 5
+qualitoon_rarity = 5
+evergreen = false
+realtime = false
+slot = 0
+world_scale = 1.0
+want_ui_spin = true
+ui_cam_offset = 0.0
+item_name = "pacelover's boost"
+item_description = ""
+big_description = "PACELOVERS ONLY"
+stats_add = {
+"speed_up": 1
+}
+stats_multiply = {}
+player_values = {}
+arbitrary_data = {}
+item_script = ExtResource("1_mgaqa")
+remember_item = true
+shop_category_title = "Boost Item"
+shop_category_color = Color(0.196078, 0.580392, 0.917647, 1)
+force_show_shop_category = false
+custom_shop_price = 0
