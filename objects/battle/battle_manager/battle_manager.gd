@@ -240,6 +240,10 @@ func end_battle() -> void:
 		await battle_win_movie.action()
 	s_battle_ending.emit()
 	s_focus_char.emit(player)
+	# FIX LATER
+	var pitch = (player.stats.pitch - 1) / 2
+	Engine.time_scale = 1 + pitch
+	AudioManager.tween_music_pitch(0.5, Engine.time_scale)
 	player.set_animation('victory_dance')
 	await player.animator.animation_finished
 	player.state = Player.PlayerState.WALK

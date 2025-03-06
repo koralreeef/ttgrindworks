@@ -49,8 +49,9 @@ func start_floor(floor_var: FloorVariant):
 	player.stats.battle_speed *= 0.75
 	if(player.stats.battle_speed < 2): player.stats.battle_speed = 2
 	player.stats.remaining_time += 3
-	player.stats.pitch *= 0.98
-	Engine.time_scale *= 0.90
+	player.stats.pitch *= 0.96
+	var pitch = (player.stats.pitch - 1) / 2
+	Engine.time_scale = 1 + pitch
 	if(Engine.time_scale < 1): Engine.time_scale = 1
 	if(player.stats.pitch < 1): player.stats.pitch = 1
 	AudioManager.tween_music_pitch(0.5, Engine.time_scale)

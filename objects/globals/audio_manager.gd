@@ -115,8 +115,10 @@ func play_sound(sfx: AudioStream, volume_db: float = 0.0, bus: String = "SFX") -
 	sfx_player.bus = bus
 	sfx_player.stream = sfx
 	sfx_player.volume_db = volume_db
-	if BattleService.ongoing_battle:
-		sfx_player.pitch_scale = Util.get_player().stats.pitch
+	# LOL 
+	if BattleService.ongoing_battle != null:
+		if sfx != preload('res://audio/sfx/ui/Click.ogg'):
+			sfx_player.pitch_scale = Util.get_player().stats.pitch
 	else:
 		sfx_player.pitch_scale = Engine.time_scale
 	sfx_player.play()

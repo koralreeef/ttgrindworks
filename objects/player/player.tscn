@@ -147,6 +147,7 @@ anomaly_boost = 0
 speed_up = 0
 battle_speed = 1.75
 remaining_time = 11.0
+pitch = 1.0
 extra_lives = 0
 sellbot_boost = 1.0
 cashbot_boost = 1.0
