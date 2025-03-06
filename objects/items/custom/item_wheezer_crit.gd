@@ -28,7 +28,7 @@ func on_round_start(ui: BattleUI) -> void:
 	crit_tracks = []
 	no_crit_tracks = []
 	var loadout := Util.get_player().character.gag_loadout.loadout.duplicate()
-
+	print(loadout)
 	# Remove lure from the running (it has no crit)
 	for i in range(loadout.size() - 1, -1, -1):
 		if is_instance_of(loadout[i].gags[0], GagLure):
@@ -37,10 +37,12 @@ func on_round_start(ui: BattleUI) -> void:
 	while loadout.size() > 0 and crit_tracks.size() < crit_track_count:
 		RandomService.array_shuffle_channel('wheezer_ability', loadout)
 		crit_tracks.append(loadout.pop_back())
+		print(crit_tracks[0].track_name)
 	
 	while loadout.size() > 0 and no_crit_tracks.size() < no_crit_track_count:
 		RandomService.array_shuffle_channel('wheezer_ability', loadout)
 		no_crit_tracks.append(loadout.pop_back())
+		print(no_crit_tracks[0].track_name)
 	
 	var colors := [Color.RED, Color.GREEN]
 	
