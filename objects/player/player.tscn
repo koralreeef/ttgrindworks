@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://wpoc3xs1yy0"]
+[gd_scene load_steps=35 format=3 uid="uid://wpoc3xs1yy0"]
 
 [ext_resource type="Script" uid="uid://b4cxlqwfntoba" path="res://objects/player/player.gd" id="1_nexlg"]
 [ext_resource type="Script" uid="uid://o2fe7ud1faj6" path="res://objects/battle/battle_resources/stats.gd" id="2_mf0eg"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://dmbp7gb7omh12" path="res://objects/player/floor_label.gd" id="21_dh5ch"]
 [ext_resource type="PackedScene" uid="uid://5hvtmu8sf5ub" path="res://objects/player/ui/timer/game_timer.tscn" id="22_0c65h"]
 [ext_resource type="Script" uid="uid://bnmo4cxoda23r" path="res://objects/player/boost_text_queue.gd" id="23_468de"]
+[ext_resource type="Script" uid="uid://4v5x24t8a00o" path="res://objects/player/stats_debug.gd" id="24_r5k7d"]
 
 [sub_resource type="Resource" id="Resource_jj61k"]
 script = ExtResource("2_mf0eg")
@@ -172,6 +173,11 @@ font = ExtResource("20_fnojw")
 font_size = 24
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_r5k7d"]
+font = ExtResource("20_fnojw")
+font_size = 14
+font_color = Color(0.737193, 0.737193, 0.737193, 1)
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head_node")]
 collision_layer = 6
 collision_mask = 5
@@ -253,6 +259,16 @@ script = ExtResource("21_dh5ch")
 
 [node name="GameTimer" parent="." instance=ExtResource("22_0c65h")]
 visible = false
+
+[node name="debug" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.815686)
+offset_left = 7.0
+offset_top = 153.0
+offset_right = 58.0
+offset_bottom = 176.0
+text = "debug"
+label_settings = SubResource("LabelSettings_r5k7d")
+script = ExtResource("24_r5k7d")
 
 [node name="BoostTextQueue" type="Control" parent="."]
 unique_name_in_owner = true
