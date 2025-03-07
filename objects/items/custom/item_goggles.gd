@@ -47,6 +47,7 @@ func on_track_refresh(element: Control) -> void:
 
 ## Runs the battle timer at the beginning of each round
 func on_round_reset(manager: BattleManager) -> void:
+	THIS_ROUND_TIME = Util.get_player().stats.remaining_time
 	timer = Util.run_timer(THIS_ROUND_TIME, TIMER_ANCHOR)
 	timer.timer.timeout.connect(on_timeout.bind(manager.battle_ui))
 	timer.reparent(manager.battle_ui)
@@ -68,7 +69,7 @@ func on_turn_complete(_gags: Array[ToonAttack]) -> void:
 			if THIS_ROUND_TIME > 7:
 			# avoid decreasing timer if a battle stops
 				if BattleService.ongoing_battle:
-					player.stats.remaining_time = player.stats.remaining_time * 0.97
+					player.stats.remaining_time = player.stats.remaining_time * 0.98
 					if player.stats.remaining_time < 7:
 						player.stats.remaining_time = 7.00
 					THIS_ROUND_TIME = player.stats.remaining_time

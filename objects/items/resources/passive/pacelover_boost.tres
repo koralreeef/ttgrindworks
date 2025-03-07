@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://w2jk7lsyrodm"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ghf1bq770uus"]
 
 [ext_resource type="Script" path="res://objects/items/custom/item_pacelover_boost.gd" id="1_mgaqa"]
 [ext_resource type="Script" path="res://objects/items/classes/item.gd" id="2_5wtyg"]

@@ -87,7 +87,6 @@ func get_next_floors() -> void:
 		
 		new_floor.randomize_details()
 		new_floor.apply_starting_details()
-		new_floor.room_count = 8
 		while not new_floor.reward or new_floor.reward.item_name in taken_items:
 			new_floor.randomize_item()
 		next_floors.append(new_floor)

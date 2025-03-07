@@ -54,7 +54,8 @@ var is_loading := true
 
 func _ready() -> void:
 	Engine.time_scale = 1.0
-	
+	# lol
+	AudioManager.tween_music_pitch(0.5, 1.0)
 	Util.stuck_lock = false
 	
 	# If we have a stored character from a "try again" lose prompt,

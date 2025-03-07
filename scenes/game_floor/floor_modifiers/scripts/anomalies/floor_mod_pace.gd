@@ -2,6 +2,16 @@ extends FloorModifier
 
 ## hopefully avoids all obstacle rooms
 func modify_floor() -> void:
+	# could be an unbalanced curve who knows
+	if Util.floor_number == 2:
+		game_floor.level_range.x += 1
+		game_floor.level_range.y += 1
+	elif Util.floor_number == 3:
+		game_floor.level_range.x += 3
+		game_floor.level_range.y += 3
+	elif Util.floor_number == 4:
+		game_floor.level_range.x += 5
+		game_floor.level_range.y += 5
 	var floor_name = game_floor.floor_variant.floor_name
 	var floor_type = game_floor.floor_variant.floor_type
 	# im so fucked when new modded floors come out
@@ -20,10 +30,10 @@ func get_mod_name() -> String:
 	return "Setting the Pace"
 
 func get_mod_quality() -> ModType:
-	return ModType.NEGATIVE
+	return ModType.NEUTRAL
 
 func get_mod_icon() -> Texture2D:
 	return load("res://ui_assets/player_ui/pause/laff_it_up.png")
 
 func get_description() -> String:
-	return "Removes all overworld bosses + more fights!"
+	return "More fights, no overworld bosses! You also feel faster..."

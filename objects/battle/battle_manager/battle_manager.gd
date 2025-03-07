@@ -94,7 +94,7 @@ func apply_battle_speed() -> void:
 	# lmao
 	if player.stats.speed_up != 0:
 		if player.stats.battle_speed < 4:
-			player.stats.battle_speed = player.stats.battle_speed * 1.03
+			player.stats.battle_speed = player.stats.battle_speed * 1.02
 			if player.stats.battle_speed > 4: player.stats.battle_speed = 4
 		Engine.time_scale = player.stats.battle_speed
 		print('time is at %.2fx' % Engine.time_scale)
