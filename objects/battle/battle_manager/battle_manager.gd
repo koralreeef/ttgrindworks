@@ -92,7 +92,7 @@ func gags_selected(gags: Array[ToonAttack]):
 
 func apply_battle_speed() -> void:
 	# lmao
-	if player.stats.speed_up != 0:
+	if Util.get_player().character.character_name == "pacelover2000":
 		if player.stats.battle_speed < 4:
 			player.stats.battle_speed = player.stats.battle_speed * 1.02
 			if player.stats.battle_speed > 4: player.stats.battle_speed = 4

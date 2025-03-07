@@ -4,8 +4,6 @@ extends ItemScript
 var max_track_count := 1
 var required_tracks: Array[Track] = []
 var banned_track: Array[Track] = []
-var defense_boost_gained := false
-var banned := false
 const DAMAGE_BOOST := 1.2
 const DEFENSE_BOOST := 1.2
 const SUCCESS_SFX := preload("res://audio/sfx/misc/MG_pairing_match_bonus_both.ogg")
@@ -56,8 +54,6 @@ func on_round_start(ui: BattleUI) -> void:
 		button.default_color = Color.DARK_RED
 		
 func on_turn_finalized(actions: Array[ToonAttack]) -> void:
-	defense_boost_gained = false
-	banned = false
 	var selected_tracks: = actions
 	var requiredTrackType := []
 	var bannedTrackType := []
@@ -79,12 +75,13 @@ func on_turn_finalized(actions: Array[ToonAttack]) -> void:
 	print(requiredTrackType)
 	if requiredTrackType.size() == max_track_count:
 		print("defense boost for fulfilling jobs!")
-		defense_boost_gained = true
 		BattleService.ongoing_battle.battle_stats[Util.get_player()].defense *= DEFENSE_BOOST
+		Util.get_player().boost_queue.queue_text("Shielded!", Color(0.40, 0.20, 0.60))
+		
 	if bannedTrackType.size() == 1:
 		print("chose a banned gag!!")
-		banned = true
 		BattleService.ongoing_battle.battle_stats[Util.get_player()].defense *= 0.5
+		Util.get_player().boost_queue.queue_text("Weak!", Color(0.54, 0.02, 0.06))
 		
 func round_started(actions : Array[BattleAction]) -> void:	
 	var player = Util.get_player()
@@ -99,11 +96,7 @@ func round_started(actions : Array[BattleAction]) -> void:
 		for action in actions:
 			if action is ToonAttack:
 				action.store_boost_text("Speedy Strike!", Color(0.854902, 0.439216, 0.839216))
-			if action is CogAttack:
-				if banned == true:
-					action.store_boost_text("Weak!", Color(0.54, 0.02, 0.06))
-				if defense_boost_gained == true:
-					action.store_boost_text("Shielded!", Color(0.854902, 0.439216, 0.839216))
+	
 	else: 
 		AudioManager.play_sound(FAIL_SFX)
 				

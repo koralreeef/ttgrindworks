@@ -37,6 +37,7 @@ func flippy(player: Player):
 func pacelover2000(player: Player):
 	for track in player.stats.gags_unlocked.keys():
 		player.stats.gags_unlocked[track] = 1
+	player.stats.speed = 1.15
 	player.stats.luck = 1.10
 
 ## Saved stats for player

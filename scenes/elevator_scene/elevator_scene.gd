@@ -46,16 +46,21 @@ func _ready():
 
 func start_floor(floor_var: FloorVariant):
 	# replacing some time back on new floor
-	player.stats.battle_speed *= 0.75
-	if(player.stats.battle_speed < 2): player.stats.battle_speed = 2
-	player.stats.remaining_time += 3
-	player.stats.pitch *= 0.96
-	var pitch = (player.stats.pitch - 1) / 2
-	Engine.time_scale = 1 + pitch
-	if(Engine.time_scale < 1): Engine.time_scale = 1
-	if(player.stats.pitch < 1): player.stats.pitch = 1
-	AudioManager.tween_music_pitch(0.5, Engine.time_scale)
-	print("regenerating some time back... battle speed: %.2fx remaining_time: %.2f"%[player.stats.battle_speed, player.stats.remaining_time])
+	if player.character.character_name == "pacelover2000":
+		player.stats.battle_speed *= 0.75
+		player.stats.remaining_time += 3
+		player.stats.pitch *= 0.96
+		var pitch = (player.stats.pitch - 1) / 2
+		Engine.time_scale = 1 + pitch
+		if(player.stats.battle_speed < 2): player.stats.battle_speed = 2
+		if(Engine.time_scale < 1): Engine.time_scale = 1
+		if(player.stats.pitch < 1): player.stats.pitch = 1
+		AudioManager.tween_music_pitch(0.5, Engine.time_scale)
+		print("regenerating some time back... battle speed: %.2fx remaining_time: %.2f" % [
+			player.stats.battle_speed, 
+			player.stats.remaining_time]
+		)
+	
 	elevator.animator.play('open')
 	player.turn_to_position($Outside.global_position, 1.5)
 	$ElevatorUI.hide()
@@ -96,6 +101,10 @@ func get_next_floors() -> void:
 
 func final_boss_time_baby() -> void:
 	var final_floor := FINAL_FLOOR_VARIANT.duplicate()
+	if player.character.character_name == "pacelover2000":
+	# this is probably fair
+		player.stats.battle_speed = 3.50
+		player.stats.remaining_time = 8.50
 	final_floor.level_range = Vector2i(8, 12)
 	next_floors = [final_floor]
 	$ElevatorUI.floors = next_floors

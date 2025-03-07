@@ -147,7 +147,6 @@ throw_heal_boost = 0.15
 squirt_defense_boost = 0.8
 drop_aftershock_round_boost = 0
 anomaly_boost = 0
-speed_up = 0
 battle_speed = 1.75
 remaining_time = 11.0
 pitch = 1.0

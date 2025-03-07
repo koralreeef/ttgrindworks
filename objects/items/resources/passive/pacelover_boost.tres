@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ghf1bq770uus"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cebtk3ovtrhfs"]
 
-[ext_resource type="Script" path="res://objects/items/custom/item_pacelover_boost.gd" id="1_mgaqa"]
-[ext_resource type="Script" path="res://objects/items/classes/item.gd" id="2_5wtyg"]
+[ext_resource type="Script" uid="uid://dyilgnhv6w234" path="res://objects/items/custom/item_pacelover_boost.gd" id="1_mgaqa"]
+[ext_resource type="Script" uid="uid://combwqypom1ru" path="res://objects/items/classes/item.gd" id="2_5wtyg"]
 
 [resource]
 script = ExtResource("2_5wtyg")
 qualitoon = 5
-qualitoon_rarity = 5
+rarity = 0
 evergreen = false
 realtime = false
 slot = 0
@@ -16,9 +16,7 @@ ui_cam_offset = 0.0
 item_name = "pacelover's boost"
 item_description = ""
 big_description = "PACELOVERS ONLY"
-stats_add = {
-"speed_up": 1
-}
+stats_add = {}
 stats_multiply = {}
 player_values = {}
 arbitrary_data = {}

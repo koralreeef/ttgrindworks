@@ -126,11 +126,11 @@ func generate_start_anomaly() -> Script:
 	return pace_mod
 		
 func apply_starting_details() -> void: 
-	if Util.get_player() and Util.get_player().stats and Util.get_player().stats.speed_up != 0:
+	if Util.get_player() and Util.get_player().stats and Util.get_player().character.character_name == "pacelover2000":
 		anomalies.push_front(generate_start_anomaly())
 		
 func first_level_details() -> void: 
-	if Util.get_player() and Util.get_player().stats and Util.get_player().stats.speed_up != 0:
+	if Util.get_player() and Util.get_player().stats and Util.get_player().character.character_name == "pacelover2000":
 		Globals.PACE_DAMAGE_BOOST = true
 		anomalies.append(generate_start_anomaly())
 		anomaly_count = modifiers.size()

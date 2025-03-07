@@ -39,9 +39,11 @@ bottoms = ExtResource("2_lpmsa")
 script = ExtResource("1_joak5")
 character_name = "pacelover2000"
 character_summary = "- he loves pace so much (many stat changes) 
-- end turn early and get a 1.2x damage boost
+- everything gets a bit faster every turn
+- end turn early for a 1.2x damage boost
 - use every purple gag for a 1.2x defense boost
-- battle speed x1.02 and timer x0.98s every turn, forever! (caps at 4x and 7s)"
+- use a red (banned) gag for a defense debuff
+"
 dna = SubResource("Resource_ax4gq")
 gag_loadout = ExtResource("2_pvta8")
 starting_laff = 15

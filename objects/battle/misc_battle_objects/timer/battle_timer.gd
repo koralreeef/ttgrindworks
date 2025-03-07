@@ -2,7 +2,7 @@ extends Control
 class_name GameTimer
 
 var timer: Timer
-
+const SFX_TIMER = preload("res://audio/sfx/objects/moles/MG_sfx_travel_game_bell_for_trolley.ogg")
 signal s_timeout
 
 var tween: Tween:
@@ -16,7 +16,7 @@ func start(time: float) -> void:
 	timer.one_shot = true
 	add_child(timer)
 	timer.start(time)
-	if Util.get_player().stats.speed_up != 0:
+	if Util.get_player().character.character_name == "pacelover2000":
 		Globals.PACE_DAMAGE_BOOST = true
 	timer.timeout.connect(
 	func(): 
@@ -30,6 +30,10 @@ func _process(_delta) -> void:
 	if timer:
 		$TimeLabel.set_text(str(int(floor(timer.time_left))))
 		%TimeLabel.label_settings.font_color = Color.RED if timer.time_left <= 6 else Color.BLACK
+		# DUDE LOL
+		if timer.time_left >= 3.31 and timer.time_left <= 3.33:
+			var audio_player := AudioManager.play_snippet(SFX_TIMER)
+			audio_player.pitch_scale = 1.15
 
 func scale_pop() -> void:
 	tween = Sequence.new([

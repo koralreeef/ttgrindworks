@@ -47,7 +47,9 @@ func on_track_refresh(element: Control) -> void:
 
 ## Runs the battle timer at the beginning of each round
 func on_round_reset(manager: BattleManager) -> void:
-	THIS_ROUND_TIME = Util.get_player().stats.remaining_time
+	var player = Util.get_player()
+	if player.character.character_name == "pacelover2000":
+		THIS_ROUND_TIME = Util.get_player().stats.remaining_time
 	timer = Util.run_timer(THIS_ROUND_TIME, TIMER_ANCHOR)
 	timer.timer.timeout.connect(on_timeout.bind(manager.battle_ui))
 	timer.reparent(manager.battle_ui)
@@ -63,9 +65,9 @@ func on_timeout(ui: BattleUI) -> void:
 func on_turn_complete(_gags: Array[ToonAttack]) -> void:
 	if is_instance_valid(timer) and not timer.is_queued_for_deletion():
 		var player = Util.get_player()
-		THIS_ROUND_TIME = player.stats.remaining_time
-	# Move to pacelover boost? idk
-		if player.stats.speed_up != 0:
+		if player.character.character_name == "pacelover2000":
+			THIS_ROUND_TIME = player.stats.remaining_time
+		# Move to pacelover boost? idk
 			if THIS_ROUND_TIME > 7:
 			# avoid decreasing timer if a battle stops
 				if BattleService.ongoing_battle:
