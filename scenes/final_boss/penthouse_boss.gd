@@ -31,7 +31,7 @@ var MUSIC_TRACK: AudioStream = load("res://audio/music/Bossbot_Entry_v2.ogg")
 var unlock_toon := false
 
 ## For battle tracking
-const COG_LEVEL_RANGE := Vector2i(8, 12)
+var COG_LEVEL_RANGE := Vector2i(8, 12)
 var boss_one_choice: CogDNA
 var boss_two_choice: CogDNA
 
@@ -148,6 +148,8 @@ func fill_elevator(cog_count: int, dna: CogDNA = null) -> Array[Cog]:
 	for i in cog_count:
 		var cog := COG_SCENE.instantiate()
 		cog.custom_level_range = COG_LEVEL_RANGE
+		if Util.get_player().character.character_name == "pacelover2000":
+			cog.custom_level_range = Vector2i(13, 16)
 		if dna: cog.dna = dna
 		elif roll_for_proxies and RandomService.randf_channel('mod_cog_chance') < 0.25:
 			cog.use_mod_cogs_pool = true

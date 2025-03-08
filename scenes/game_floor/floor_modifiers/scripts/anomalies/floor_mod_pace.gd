@@ -23,7 +23,6 @@ func modify_floor() -> void:
 	#for i in floor_type.obstacle_rooms.size():
 	#	floor_type.obstacle_rooms[i].rarity_weight = 0
 	#   print("removed obstacle room %s"% floor_type.obstacle_rooms[i])
-	game_floor.battle_ratio	
 	print("removed overworld boss hopefully")
 
 func get_mod_name() -> String:

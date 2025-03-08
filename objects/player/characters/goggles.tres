@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cpg3x6cg4fvrw" path="res://objects/toon/clothing/shorts/denim_shorts.tres" id="2_lpmsa"]
 [ext_resource type="Resource" uid="uid://tyi7ukxtvcgc" path="res://objects/battle/battle_resources/gag_loadouts/loadouts/standard_loadout.tres" id="2_pvta8"]
 [ext_resource type="Resource" uid="uid://8fdqrfrfgdmt" path="res://objects/toon/clothing/shirts/lightning_shirt.tres" id="4_p6jlq"]
-[ext_resource type="Resource" path="res://objects/items/resources/passive/pacelover_boost.tres" id="9_r07dh"]
+[ext_resource type="Resource" uid="uid://cebtk3ovtrhfs" path="res://objects/items/resources/passive/pacelover_boost.tres" id="9_r07dh"]
 [ext_resource type="Script" uid="uid://combwqypom1ru" path="res://objects/items/classes/item.gd" id="9_t8yrd"]
 [ext_resource type="Resource" uid="uid://bxvpu1m80bbqf" path="res://objects/items/resources/accessories/glasses/goggles.tres" id="11_j65st"]
 

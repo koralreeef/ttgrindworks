@@ -51,7 +51,7 @@ func on_round_start(ui: BattleUI) -> void:
 	var element2 := ui.get_track_element(banned_track[0])	
 	
 	for button in element2.gag_buttons:
-		button.default_color = Color.DARK_RED
+		button.default_color = Color.FIREBRICK
 		
 func on_turn_finalized(actions: Array[ToonAttack]) -> void:
 	var selected_tracks: = actions

@@ -101,11 +101,13 @@ func get_next_floors() -> void:
 
 func final_boss_time_baby() -> void:
 	var final_floor := FINAL_FLOOR_VARIANT.duplicate()
+	final_floor.level_range = Vector2i(8, 12)
 	if player.character.character_name == "pacelover2000":
 	# this is probably fair
+		final_floor.apply_starting_details()
 		player.stats.battle_speed = 3.50
 		player.stats.remaining_time = 8.50
-	final_floor.level_range = Vector2i(8, 12)
+		final_floor.level_range = Vector2i(13, 16)
 	next_floors = [final_floor]
 	$ElevatorUI.floors = next_floors
 	$ElevatorUI.set_floor_index(0)
