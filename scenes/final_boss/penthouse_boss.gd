@@ -117,16 +117,9 @@ func set_caged_toon_dna(dna: ToonDNA) -> void:
 	caged_toon.set_animation('neutral')
 
 func get_caged_toon_dna() -> ToonDNA:
-	var unlock_index: int = SaveFileService.progress_file.characters_unlocked
-	var can_unlock: bool = Util.get_player().stats.character.character_name == Globals.TOON_UNLOCK_ORDER[unlock_index - 1].character_name
-	if Util.get_player().stats.character.character_name == Globals.TOON_UNLOCK_ORDER[0].character_name or Util.get_player().character.character_name == "pacelover2000":
-		can_unlock = false
-	if not can_unlock:
-		var dna := ToonDNA.new()
-		dna.randomize_dna()
-		return dna
-	unlock_toon = true
-	return Globals.TOON_UNLOCK_ORDER[unlock_index].dna
+	var dna := ToonDNA.new()
+	dna.randomize_dna()
+	return dna
 
 func on_battle_finished() -> void:
 	if unlock_toon:
