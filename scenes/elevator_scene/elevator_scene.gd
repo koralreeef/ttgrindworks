@@ -36,16 +36,7 @@ func _ready():
 	
 	AudioManager.stop_music()
 	AudioManager.set_default_music(load('res://audio/music/beta_installer.ogg'))
-	
-	# Save progress at every elevator scene
-	await Task.delay(0.1)
-	SaveFileService.save()
-	
-	# Get the next random floor
-	get_next_floors()
-
-func start_floor(floor_var: FloorVariant):
-	# replacing some time back on new floor
+		# replacing some time back on new floor
 	if player.character.character_name == "pacelover2000":
 		player.stats.battle_speed *= 0.75
 		player.stats.remaining_time += 3
@@ -60,7 +51,14 @@ func start_floor(floor_var: FloorVariant):
 			player.stats.battle_speed, 
 			player.stats.remaining_time]
 		)
+	# Save progress at every elevator scene
+	await Task.delay(0.1)
+	SaveFileService.save()
 	
+	# Get the next random floor
+	get_next_floors()
+
+func start_floor(floor_var: FloorVariant):
 	elevator.animator.play('open')
 	player.turn_to_position($Outside.global_position, 1.5)
 	$ElevatorUI.hide()

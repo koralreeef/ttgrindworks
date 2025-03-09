@@ -22,6 +22,7 @@ func setup() -> void:
 
 func on_battle_start(manager: BattleManager) -> void:
 	max_track_count = Util.get_player().stats.turns - 1
+	AudioManager.tween_music_pitch(0.5, Util.get_player().stats.pitch)
 	await manager.s_ui_initialized
 	var ui: BattleUI = manager.battle_ui
 	manager.s_round_ended.connect(on_round_start.bind(ui))
@@ -91,6 +92,8 @@ func round_started(actions : Array[BattleAction]) -> void:
 		print("damage boost for ending turn!")
 		BattleService.ongoing_battle.battle_stats[Util.get_player()].damage *= DAMAGE_BOOST
 		player.stats.pitch *= 1.005
+		if player.stats.pitch > 1.40:
+			player.stats.pitch = 1.40
 		AudioManager.tween_music_pitch(0.5, player.stats.pitch)
 		
 		for action in actions:
