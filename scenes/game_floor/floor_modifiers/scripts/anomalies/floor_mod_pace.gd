@@ -3,9 +3,6 @@ extends FloorModifier
 ## hopefully avoids all obstacle rooms
 func modify_floor() -> void:
 	# could be an unbalanced curve who knows
-	if Util.floor_number == 1:
-		game_floor.level_range.x += 1
-		game_floor.level_range.y += 1
 	if Util.floor_number == 2:
 		game_floor.level_range.x += 1
 		game_floor.level_range.y += 1
