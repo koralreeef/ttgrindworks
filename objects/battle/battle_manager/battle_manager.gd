@@ -4,6 +4,7 @@ class_name BattleManager
 const ACTION_TIMEOUT_TIME := 60.0
 
 const ITEM_POOL_PROGRESSIVES := "res://objects/items/pools/progressives.tres"
+const ITEM_POOL_PERMANENT := "res://objects/items/pools/permanent.tres"
 
 const CRIT_SFX_1 := preload("res://audio/sfx/battle/gags/crit/crit_1.ogg")
 const CRIT_SFX_2 := preload("res://audio/sfx/battle/gags/crit/crit_2.ogg")
@@ -260,7 +261,13 @@ func end_battle() -> void:
 			chest.global_rotation = battle_node.global_rotation
 			if player.better_battle_rewards == true and current_round <= 2:
 				chest.item_pool = load(ITEM_POOL_PROGRESSIVES)
-				player.boost_queue.queue_text("Bounty!", Color.GREEN)
+				# could be more efficient but do i want to add another stat to the player
+				var items = player.stats.items
+				var color = Color.GREEN
+				for item in items:
+					if item.item_name == "Loaded Samba":
+						color = Color.GRAY
+				player.boost_queue.queue_text("Bounty!", color)
 			else:
 				chest.item_pool = battle_node.item_pool
 			chest.override_replacement_rolls = RandomService.randi_channel('true_random') % 2 == 0
