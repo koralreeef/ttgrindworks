@@ -46,7 +46,7 @@ func become_full_visible() -> void:
 	for item in items:
 		if item.item_name == "Loaded Samba":
 			count += 1
-		if item.item_name = "Double-Edged Sword":
+		if item.item_name == "Double-Edged Sword":
 			count += 1
 			
 	if count == 2:
