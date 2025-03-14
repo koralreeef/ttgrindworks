@@ -6,6 +6,8 @@ var required_tracks: Array[Track] = []
 var banned_track: Array[Track] = []
 const DAMAGE_BOOST := 1.2
 const DEFENSE_BOOST := 1.2
+var banned := false
+var shielded := false
 const SUCCESS_SFX := preload("res://audio/sfx/misc/MG_pairing_match_bonus_both.ogg")
 const FAIL_SFX := preload("res://audio/sfx/misc/MG_neg_buzzer.ogg")
 
@@ -26,7 +28,6 @@ func on_battle_start(manager: BattleManager) -> void:
 	await manager.s_ui_initialized
 	var ui: BattleUI = manager.battle_ui
 	manager.s_round_ended.connect(on_round_start.bind(ui))
-	ui.s_turn_complete.connect(on_turn_finalized)
 	on_round_start(ui)
 	
 func on_round_start(ui: BattleUI) -> void:
@@ -54,11 +55,18 @@ func on_round_start(ui: BattleUI) -> void:
 	for button in element2.gag_buttons:
 		button.default_color = Color.FIREBRICK
 		
-func on_turn_finalized(actions: Array[ToonAttack]) -> void:
-	var selected_tracks: = actions
+func round_started(actions : Array[BattleAction]) -> void:	
+	# this might be dogshit
+	var toonActions := []
+	var player = Util.get_player()
+	for action in actions:
+		if action is ToonAttack:
+			toonActions.append(action)
+			
+	var selected_tracks := []
 	var requiredTrackType := []
 	var bannedTrackType := []
-	for action in actions:
+	for action in toonActions:
 		for track in required_tracks:
 			for required in track.gags:
 				# DEVS PLEASE ADD A TRACK NAME VARIABLE TO ACTIONS PLEASEEEEEEEEEEEEE
@@ -67,46 +75,49 @@ func on_turn_finalized(actions: Array[ToonAttack]) -> void:
 					# print("appended %s " % track.track_name)
 					
 	# future proofing in case one banned gag was too easy
-	for action in actions:
+	for action in toonActions:
 		for track in banned_track:
 			for banned in track.gags:
 				if not bannedTrackType.has(track.track_name) and banned.action_name == action.action_name:
 					bannedTrackType.append(track.track_name)
 	
-	print(requiredTrackType)
-	if requiredTrackType.size() == max_track_count:
-		print("defense boost for fulfilling jobs!")
-		BattleService.ongoing_battle.battle_stats[Util.get_player()].defense *= DEFENSE_BOOST
-		Util.get_player().boost_queue.queue_text("Shielded!", Color(0.40, 0.20, 0.60))
-		
+	print(requiredTrackType)		
 	if bannedTrackType.size() == 1:
 		print("chose a banned gag!!")
-		BattleService.ongoing_battle.battle_stats[Util.get_player()].defense *= 0.5
+		banned = true
 		Util.get_player().boost_queue.queue_text("Weak!", Color(0.54, 0.02, 0.06))
 		
-func round_started(actions : Array[BattleAction]) -> void:	
-	var player = Util.get_player()
+	elif requiredTrackType.size() == max_track_count:
+		print("defense boost for fulfilling jobs!")
+		shielded = true
+		Util.get_player().boost_queue.queue_text("Shielded!", Color(0.40, 0.20, 0.60))
+
+	for action in actions:
+		if shielded == true:
+			if action is CogAttack:
+				action.damage *= 0.8
+		elif banned == true:
+			if action is CogAttack:
+				action.damage *= 1.5
 			
 	if Globals.PACE_DAMAGE_BOOST == true:
 		AudioManager.play_sound(SUCCESS_SFX)
 		print("damage boost for ending turn!")
-		BattleService.ongoing_battle.battle_stats[Util.get_player()].damage *= DAMAGE_BOOST
 		player.stats.pitch *= 1.005
 		if player.stats.pitch > 1.40:
 			player.stats.pitch = 1.40
 		AudioManager.tween_music_pitch(0.5, player.stats.pitch)
 		
-		for action in actions:
-			if action is ToonAttack:
-				action.store_boost_text("Speedy Strike!", Color(0.854902, 0.439216, 0.839216))
+		for action in toonActions:
+			action.damage *= DAMAGE_BOOST
+			action.store_boost_text("Speedy Strike!", Color(0.854902, 0.439216, 0.839216))
 	
 	else: 
 		AudioManager.play_sound(FAIL_SFX)
 				
 func on_round_reset(manager: BattleManager) -> void: 
-	var player = Util.get_player()
-	BattleService.ongoing_battle.battle_stats[player].damage = player.stats.damage
-	BattleService.ongoing_battle.battle_stats[player].defense = player.stats.defense
+	banned == false
+	shielded == false
 	
 func reset_track_colors(ui: BattleUI) -> void:
 	for track_element in ui.gag_tracks.get_children():

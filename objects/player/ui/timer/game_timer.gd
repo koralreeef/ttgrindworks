@@ -40,4 +40,16 @@ static func get_formatted_time(_time: int) -> String:
 func become_full_visible() -> void:
 	label.self_modulate = Color.WHITE
 	label.label_settings.font_color = Color.LIGHT_GREEN
+	var count = 0
+	var items = Util.get_player().stats.items
+	
+	for item in items:
+		if item.item_name == "Loaded Samba":
+			count += 1
+		if item.item_name = "Double-Edged Sword":
+			count += 1
+			
+	if count == 2:
+		label.label_settings.font_color = Color.LIGHT_GOLDENROD
+		
 	label.scale = Vector2.ONE * 1.25

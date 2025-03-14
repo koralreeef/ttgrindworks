@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemPool" load_steps=4 format=3 uid="uid://1qwy45k8ke42"]
+
+[ext_resource type="Script" uid="uid://combwqypom1ru" path="res://objects/items/classes/item.gd" id="1_mq5qm"]
+[ext_resource type="Resource" uid="uid://dib7d4l66tfys" path="res://objects/items/resources/accessories/hats/loaded_fruit_hat.tres" id="2_koqmf"]
+[ext_resource type="Script" uid="uid://wiibpvvki8vs" path="res://objects/items/classes/item_pool.gd" id="8_d21l6"]
+
+[resource]
+script = ExtResource("8_d21l6")
+items = Array[ExtResource("1_mq5qm")]([ExtResource("2_koqmf")])
