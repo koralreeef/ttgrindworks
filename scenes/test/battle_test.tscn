@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cv2afui5p28af" path="res://objects/modules/mint/base_rooms/mint_diamond_room.tscn" id="1_h2rqk"]
 [ext_resource type="PackedScene" uid="uid://direah3lbjuu5" path="res://objects/battle/battle_node/battle_node.tscn" id="2_alx7d"]
 [ext_resource type="PackedScene" uid="uid://dflwjcy6fj0av" path="res://objects/cog/cog.tscn" id="3_okjj0"]
-[ext_resource type="PackedScene" uid="uid://babag0m5ugnyx" path="res://objects/player/player.tscn" id="4_fefq8"]
+[ext_resource type="PackedScene" uid="uid://wpoc3xs1yy0" path="res://objects/player/player.tscn" id="4_fefq8"]
 [ext_resource type="Script" uid="uid://o2fe7ud1faj6" path="res://objects/battle/battle_resources/stats.gd" id="5_wgpvb"]
 [ext_resource type="Script" uid="uid://c8kas2j4io1jh" path="res://objects/toon/clothing/toon_bottoms.gd" id="6_sp5d7"]
 [ext_resource type="Script" uid="uid://yg7gxug4rab" path="res://objects/toon/toon_dna.gd" id="7_42kli"]
@@ -171,10 +171,6 @@ throw_heal_boost = 0.1
 squirt_defense_boost = 0.8
 drop_aftershock_round_boost = 0
 anomaly_boost = 0
-battle_speed = 1.75
-remaining_time = 11.0
-pitch = 1.0
-laff_rate = 14
 extra_lives = 0
 sellbot_boost = 1.0
 cashbot_boost = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://b1sjkcka65imo"]
+[gd_scene load_steps=67 format=4 uid="uid://b1sjkcka65imo"]
 
 [ext_resource type="Texture2D" uid="uid://dpsidiie17khh" path="res://models/facilities/factory/FINALFACTORY_0.png" id="1_lh6vi"]
 [ext_resource type="Texture2D" uid="uid://0fpeux22orn8" path="res://models/facilities/factory/FINALFACTORY_1.png" id="2_5hivt"]
@@ -15,8 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://dxyq5lb5oineo" path="res://objects/interactables/treasure_chest/treasure_chest.tscn" id="13_36mm7"]
 [ext_resource type="Resource" uid="uid://j75am6rbrvrj" path="res://objects/items/pools/progressives.tres" id="14_f8w8w"]
 [ext_resource type="PackedScene" uid="uid://il8lb2ksbpt7" path="res://models/facilities/factory/factory_entrance_building.fbx" id="15_3rnrk"]
-[ext_resource type="Resource" uid="uid://chttxdm6c4n1b" path="res://objects/items/resources/accessories/backpacks/double_edge_sword.tres" id="15_c1hvx"]
-[ext_resource type="Resource" uid="uid://dib7d4l66tfys" path="res://objects/items/resources/accessories/hats/loaded_fruit_hat.tres" id="15_towhf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36w8k"]
 resource_name = "BoilerRoomT_WallMetalPlateSHD_WallMetalPlateV2SHD"
@@ -997,18 +995,6 @@ scripted_progression = true
 [node name="treasure_chest2" parent="Chests" instance=ExtResource("13_36mm7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5229, 0, -0.220811)
 item_pool = ExtResource("14_f8w8w")
-
-[node name="treasure_chest3" parent="Chests" instance=ExtResource("13_36mm7")]
-transform = Transform3D(-0.924872, -0.379971, 0.0153047, -0.371805, 0.895079, -0.246159, 0.0798345, -0.233356, -0.969109, -1.49949, 0.166041, 9.59874)
-override_replacement_rolls = true
-override_item = ExtResource("15_c1hvx")
-unopenable = true
-
-[node name="treasure_chest4" parent="Chests" instance=ExtResource("13_36mm7")]
-transform = Transform3D(0.876507, -0.146834, 0.458448, 0.16522, 0.986257, -1.51549e-08, -0.452147, 0.0757447, 0.888721, 2.29594, 0.166041, 9.48463)
-override_replacement_rolls = true
-override_item = ExtResource("15_towhf")
-unopenable = true
 
 [node name="Navigation" type="NavigationRegion3D" parent="."]
 visible = false

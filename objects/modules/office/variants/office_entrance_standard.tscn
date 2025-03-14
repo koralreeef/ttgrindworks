@@ -1,10 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://3a1rn2dg5dw4"]
+[gd_scene load_steps=15 format=4 uid="uid://3a1rn2dg5dw4"]
 
 [ext_resource type="PackedScene" uid="uid://k8r4dwm2bay5" path="res://objects/modules/office/base_rooms/office_entrance.tscn" id="1_oayny"]
 [ext_resource type="PackedScene" uid="uid://dxyq5lb5oineo" path="res://objects/interactables/treasure_chest/treasure_chest.tscn" id="2_j5x30"]
 [ext_resource type="Resource" uid="uid://j75am6rbrvrj" path="res://objects/items/pools/progressives.tres" id="3_6la4v"]
-[ext_resource type="Resource" uid="uid://dib7d4l66tfys" path="res://objects/items/resources/accessories/hats/loaded_fruit_hat.tres" id="4_gku86"]
-[ext_resource type="Resource" uid="uid://chttxdm6c4n1b" path="res://objects/items/resources/accessories/backpacks/double_edge_sword.tres" id="4_lakxs"]
 [ext_resource type="PackedScene" uid="uid://b4kk4sdrhkn2g" path="res://objects/props/office/cardboard_box.tscn" id="4_oxk0w"]
 [ext_resource type="PackedScene" uid="uid://d0bnakgqatchq" path="res://objects/props/office/lamp_big.tscn" id="5_j5sbx"]
 [ext_resource type="PackedScene" uid="uid://cng3jffjmwdv8" path="res://objects/props/office/couch.tscn" id="6_j0btx"]
@@ -178,18 +176,6 @@ unopenable = true
 
 [node name="treasure_lock" parent="Chests/Fakes/FakeChest2" index="3"]
 visible = false
-
-[node name="treasure_chest3" parent="Chests" index="3" instance=ExtResource("2_j5x30")]
-transform = Transform3D(-0.926256, -0.34007, 0.162484, -0.371805, 0.895079, -0.246159, -0.0617247, -0.288419, -0.955513, -2.03982, 0.198821, 4.50021)
-override_replacement_rolls = true
-override_item = ExtResource("4_lakxs")
-unopenable = true
-
-[node name="treasure_chest4" parent="Chests" index="4" instance=ExtResource("2_j5x30")]
-transform = Transform3D(0.935067, -0.156644, 0.317983, 0.16522, 0.986257, -1.51549e-08, -0.313613, 0.0525371, 0.948096, 1.72883, 0.198821, 4.96454)
-override_replacement_rolls = true
-override_item = ExtResource("4_gku86")
-unopenable = true
 
 [node name="Props" type="Node3D" parent="." index="6"]
 

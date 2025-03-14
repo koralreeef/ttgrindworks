@@ -11,7 +11,6 @@ var SFX_OPEN := LazyLoader.defer("res://audio/sfx/misc/diving_treasure_pick_up.o
 @export var item_pool: ItemPool
 @export var scripted_progression := false
 
-var file = SaveFileService.progress_file
 const EXTRA_TURN := preload(ExtraTurnItem.BASE_ITEM)
 const POINT_BOOST := preload(PointBoostItem.BASE_ITEM)
 const LAFF_BOOST := preload("res://objects/items/resources/passive/laff_boost.tres")
@@ -29,14 +28,7 @@ var opened := false
 signal s_opened
 
 func body_entered(body: Node3D) -> void:
-	# SO BAD LOL
-	if unopenable and opened == false:
-		if Util.get_player().character.character_name == "pacelover2000" && file.characters_unlocked >= 2 && Util.floor_number == 0:
-			open()
-			opened = true
-			return
-		else:
-			vanish()
+	if unopenable:
 		return
 	if not body is Player or opened:
 		return

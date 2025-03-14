@@ -1,30 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn5ivmft0p2vy"]
+[gd_scene load_steps=4 format=3 uid="uid://bn5ivmft0p2vy"]
 
 [ext_resource type="PackedScene" uid="uid://dh73uqxt8akws" path="res://objects/modules/cgc/base_rooms/cgc_entrance.tscn" id="1_42lmr"]
 [ext_resource type="PackedScene" uid="uid://dxyq5lb5oineo" path="res://objects/interactables/treasure_chest/treasure_chest.tscn" id="2_3td3o"]
-[ext_resource type="Resource" uid="uid://dib7d4l66tfys" path="res://objects/items/resources/accessories/hats/loaded_fruit_hat.tres" id="3_0x5fb"]
 [ext_resource type="Resource" uid="uid://j75am6rbrvrj" path="res://objects/items/pools/progressives.tres" id="3_3hems"]
-[ext_resource type="Resource" uid="uid://chttxdm6c4n1b" path="res://objects/items/resources/accessories/backpacks/double_edge_sword.tres" id="3_8e8i7"]
 
 [node name="cgc_entrance" instance=ExtResource("1_42lmr")]
 
-[node name="treasure_chest3" parent="." index="28" instance=ExtResource("2_3td3o")]
-transform = Transform3D(-0.0520059, 0.244669, 0.968211, -0.371805, 0.895079, -0.246159, -0.926853, -0.372787, 0.0444196, -4.05383, 0.19882, -2.22052)
-override_replacement_rolls = true
-override_item = ExtResource("3_8e8i7")
-unopenable = true
-
-[node name="treasure_chest4" parent="." index="29" instance=ExtResource("2_3td3o")]
-transform = Transform3D(0.425604, -0.0712981, -0.902096, 0.16522, 0.986257, -1.4444e-08, 0.889699, -0.149044, 0.431535, -4.05383, 0.19882, 1.57662)
-override_replacement_rolls = true
-override_item = ExtResource("3_0x5fb")
-unopenable = true
-
-[node name="treasure_chest" parent="." index="30" instance=ExtResource("2_3td3o")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.1382, 0, -4.15379)
+[node name="treasure_chest" parent="." index="28" instance=ExtResource("2_3td3o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.1382, 0, -4.2958)
 item_pool = ExtResource("3_3hems")
 scripted_progression = true
 
-[node name="treasure_chest2" parent="." index="31" instance=ExtResource("2_3td3o")]
+[node name="treasure_chest2" parent="." index="29" instance=ExtResource("2_3td3o")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.1382, 0, 3.11784)
 item_pool = ExtResource("3_3hems")

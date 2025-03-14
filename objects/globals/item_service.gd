@@ -13,14 +13,6 @@ var linked_items: Array = [
 	[
 		load("res://objects/items/resources/accessories/backpacks/gag_pack.tres"),
 		load("res://objects/items/resources/accessories/glasses/goggles.tres"),
-	],
-	[
-		load("res://objects/items/resources/accessories/backpacks/wood_sword.tres"),
-		load("res://objects/items/resources/accessories/glasses/double_edge_sword.tres"),
-	],
-	[
-		load("res://objects/items/resources/accessories/backpacks/fruit_hat.tres"),
-		load("res://objects/items/resources/accessories/glasses/loaded_fruit_hat.tres"),
 	]
 ]
 
@@ -229,16 +221,15 @@ func get_gag_rate() -> float:
 	
 	return chance
 
-var STARTING_LAFF := 30
-var FLOOR_LAFF_INCREMENT := 14
+const STARTING_LAFF := 30
+const FLOOR_LAFF_INCREMENT := 14
 const LIKELIHOOD_PER_POINT := 0.1
 func get_laff_rate() -> float:
 	if not is_instance_valid(Util.get_player()):
 		return 0.0
-	FLOOR_LAFF_INCREMENT = Util.get_player().stats.laff_rate
-	STARTING_LAFF = Util.get_player().character.starting_laff
+	
 	# Get the current laff total
-	# Take player's max hp + all the other laff boost items in playw
+	# Take player's max hp + all the other laff boost items in play
 	var laff_total := Util.get_player().stats.max_hp
 	for laff_boost : Item in get_items_in_play("Laff Boost"):
 		if laff_boost.stats_add.has('max_hp'):
