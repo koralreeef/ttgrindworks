@@ -1,6 +1,7 @@
-extends Label
+extends Control
 
 # AUGHHH make a dict later
+var label := Label.new()
 var damage = 0
 var defense = 0
 var luck = 0
@@ -16,13 +17,28 @@ var battle_speed = 0
 var loadout = GagLoadout
 
 func _ready() -> void:
-	if SaveFileService.settings_file.show_timer:
-		show()
+	# top level node so it doesn't get destroyed when switching scenes
+	label.set_as_top_level(false)
+	name = "debug stats"
+	label.self_modulate = Color(1, 1, 1, 0.737255)
+	label.set("theme_override_fonts/font", load("res://fonts/Minnie.TTF"))
+	label.set("theme_override_font_sizes/font_size", 14)
+	label.set("theme_override_constants/shadow_outline_size", 3)
+	label.set("theme_override_colors/font_shadow_color", Color(0.0862745, 0.0862745, 0.0862745, 0.615686))
+	label.layout_mode = 1
+	label.offset_left = 4.0
+	label.offset_top = 142.0
+	label.offset_right = 146.0
+	label.offset_bottom = 171.0
+	print("p[enis]")
+	add_child(label)
+	set_process(true)
 
-func _process(delta: float) -> void:
+func _process(_delta):
 	var fps = str(Engine.get_frames_per_second())
 	if not Util.get_player():
-		print("couldn't find player")
+		label.set_text("fps: %s
+		waiting for player..." % fps)
 		return
 	else:
 		var player = Util.get_player()
@@ -37,7 +53,7 @@ func _process(delta: float) -> void:
 		else:
 			damage = player.stats.damage
 			defense = player.stats.defense
-			evasiveness = player.stats.defense
+			evasiveness = player.stats.evasiveness
 			luck = player.stats.luck
 			
 		squirt = player.stats.gags_unlocked["Squirt"]
@@ -47,7 +63,7 @@ func _process(delta: float) -> void:
 		throw = player.stats.gags_unlocked["Throw"]
 		drop = player.stats.gags_unlocked["Drop"]
 		
-	text = "fps: %s 
+	label.set_text("fps: %s 
 	battle speed: %.2fx 
 	
 	damage: %.2f 
@@ -75,3 +91,4 @@ func _process(delta: float) -> void:
 		sound,
 		throw,
 		drop]
+	)
