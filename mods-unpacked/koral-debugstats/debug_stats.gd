@@ -30,7 +30,6 @@ func _ready() -> void:
 	label.offset_top = 142.0
 	label.offset_right = 146.0
 	label.offset_bottom = 171.0
-	print("p[enis]")
 	add_child(label)
 	set_process(true)
 
