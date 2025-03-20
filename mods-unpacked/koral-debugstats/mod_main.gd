@@ -9,7 +9,7 @@ extends Node
 # ! You can learn more about static typing in the docs
 # ! https://docs.godotengine.org/en/3.5/tutorials/scripting/gdscript/static_typing.html
 
-# ? This mod adds a setting to toggle frame rate meter on and off
+# ? This mod adds a stats panel to the gui
 
 const MOD_DIR := "koral-debugstats" # Name of the directory that this file is in
 const LOG_NAME := "koral-debugstats:Main" # Full ID of the mod (AuthorName-ModName)
@@ -62,7 +62,7 @@ func _ready() -> void:
 	# ! This uses Godot's native `tr` func, which translates a string. You'll
 	# ! find this particular string in the example CSV here: translations/modname.csv
 	# ModLoaderLog.info("Translation Demo: " + tr("MODNAME_READY_TEXT"), LOG_NAME)
-	# Load the framerate_meter.gd script
+	# Load debug stats script
 	var debug_stats_script = load(mod_dir_path.path_join("debug_stats.gd"))
 	if debug_stats_script:
 		var debug_stats = debug_stats_script.new()

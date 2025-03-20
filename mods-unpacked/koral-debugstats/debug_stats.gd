@@ -17,8 +17,6 @@ var battle_speed = 0
 var loadout = GagLoadout
 
 func _ready() -> void:
-	# top level node so it doesn't get destroyed when switching scenes
-	label.set_as_top_level(false)
 	name = "debug stats"
 	label.self_modulate = Color(1, 1, 1, 0.737255)
 	label.set("theme_override_fonts/font", load("res://fonts/Minnie.TTF"))
@@ -55,12 +53,19 @@ func _process(_delta):
 			evasiveness = player.stats.evasiveness
 			luck = player.stats.luck
 			
-		squirt = player.stats.gags_unlocked["Squirt"]
-		trap = player.stats.gags_unlocked["Trap"]
-		lure = player.stats.gags_unlocked["Lure"]
-		sound = player.stats.gags_unlocked["Sound"]
-		throw = player.stats.gags_unlocked["Throw"]
-		drop = player.stats.gags_unlocked["Drop"]
+		# this is ass oh well
+		if player.stats.gags_unlocked.has("Squirt"):
+			squirt = player.stats.gags_unlocked["Squirt"]
+		if player.stats.gags_unlocked.has("Trap"):
+			trap = player.stats.gags_unlocked["Trap"]
+		if player.stats.gags_unlocked.has("Lure"):
+			lure = player.stats.gags_unlocked["Lure"]
+		if player.stats.gags_unlocked.has("Sound"):
+			sound = player.stats.gags_unlocked["Sound"]
+		if player.stats.gags_unlocked.has("Throw"):
+			throw = player.stats.gags_unlocked["Throw"]
+		if player.stats.gags_unlocked.has("Drop"):
+			drop = player.stats.gags_unlocked["Drop"]
 		
 	label.set_text("fps: %s 
 	battle speed: %.2fx 
