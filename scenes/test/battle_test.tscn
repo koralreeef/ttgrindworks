@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://chtdvbuf0ivvt"]
+[gd_scene load_steps=41 format=3 uid="uid://chtdvbuf0ivvt"]
 
 [ext_resource type="PackedScene" uid="uid://cv2afui5p28af" path="res://objects/modules/mint/base_rooms/mint_diamond_room.tscn" id="1_h2rqk"]
 [ext_resource type="PackedScene" uid="uid://direah3lbjuu5" path="res://objects/battle/battle_node/battle_node.tscn" id="2_alx7d"]
@@ -16,12 +16,13 @@
 [ext_resource type="Resource" uid="uid://cvaos6ucteefy" path="res://objects/battle/battle_resources/gag_loadouts/gag_tracks/sound.tres" id="13_eed60"]
 [ext_resource type="Script" uid="uid://combwqypom1ru" path="res://objects/items/classes/item.gd" id="14_7upve"]
 [ext_resource type="Resource" uid="uid://0528viy6hdsv" path="res://objects/battle/battle_resources/gag_loadouts/gag_tracks/throw.tres" id="14_ww67o"]
-[ext_resource type="Resource" uid="uid://cyiwxplege133" path="res://objects/items/resources/passive/emergency_unite.tres" id="15_8ctgi"]
 [ext_resource type="Resource" uid="uid://dvxiqtapdvmj4" path="res://objects/battle/battle_resources/gag_loadouts/gag_tracks/squirt.tres" id="15_h0hwy"]
 [ext_resource type="Resource" uid="uid://lf7h5xkbt2op" path="res://objects/battle/battle_resources/gag_loadouts/gag_tracks/drop.tres" id="16_diqeu"]
 [ext_resource type="Script" uid="uid://dfa2ic7ngy7sg" path="res://objects/quests/quest.gd" id="16_qov7a"]
 [ext_resource type="Script" uid="uid://b68uqtpqs73wk" path="res://objects/player/player_stats.gd" id="17_8fcps"]
 [ext_resource type="Script" uid="uid://ckypnf7t805p3" path="res://objects/battle/battle_resources/gag_loadouts/gag_loadout.gd" id="17_aepo7"]
+[ext_resource type="Resource" uid="uid://qorifd8ver4o" path="res://mods-unpacked/koral-pacelover/pacelover_goggles.tres" id="20_16xtn"]
+[ext_resource type="Resource" uid="uid://ca4m54gqcxi6d" path="res://mods-unpacked/dtm-LoopyJakeMcPow/round_glasses.tres" id="21_1xuw6"]
 [ext_resource type="PackedScene" uid="uid://dxyq5lb5oineo" path="res://objects/interactables/treasure_chest/treasure_chest.tscn" id="23_16xtn"]
 [ext_resource type="Resource" uid="uid://ba7mgoe7i5oq4" path="res://objects/items/resources/accessories/backpacks/gag_pack.tres" id="24_1xuw6"]
 [ext_resource type="Resource" uid="uid://divycml3lyvqr" path="res://objects/items/resources/accessories/hats/detective_hat.tres" id="25_66vty"]
@@ -93,14 +94,14 @@ character_summary = "- Can revive once before going sad
 dna = SubResource("Resource_h5kab")
 gag_loadout = SubResource("Resource_s4oci")
 starting_laff = 25
-starting_items = Array[ExtResource("14_7upve")]([ExtResource("15_8ctgi")])
+starting_items = Array[ExtResource("14_7upve")]([ExtResource("20_16xtn")])
 base_stats = SubResource("Resource_4yraj")
 random_character_stored_name = ""
 
 [sub_resource type="Resource" id="Resource_vs51t"]
 script = ExtResource("17_8fcps")
 money = 30
-items = Array[ExtResource("14_7upve")]([])
+items = Array[ExtResource("14_7upve")]([ExtResource("20_16xtn"), ExtResource("21_1xuw6"), null])
 gags_unlocked = Dictionary[String, int]({
 "Drop": 7,
 "Lure": 7,

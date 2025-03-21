@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=12 format=3 uid="uid://cb81gtgjf1hpi"]
+
+[ext_resource type="Script" uid="uid://yg7gxug4rab" path="res://objects/toon/toon_dna.gd" id="1_4idkh"]
+[ext_resource type="Script" uid="uid://ts8xpgftpmty" path="res://objects/player/character.gd" id="1_joak5"]
+[ext_resource type="Script" uid="uid://o2fe7ud1faj6" path="res://objects/battle/battle_resources/stats.gd" id="1_vg416"]
+[ext_resource type="Resource" uid="uid://cpg3x6cg4fvrw" path="res://objects/toon/clothing/shorts/denim_shorts.tres" id="2_lpmsa"]
+[ext_resource type="Resource" uid="uid://tyi7ukxtvcgc" path="res://objects/battle/battle_resources/gag_loadouts/loadouts/standard_loadout.tres" id="2_pvta8"]
+[ext_resource type="Resource" uid="uid://8fdqrfrfgdmt" path="res://objects/toon/clothing/shirts/lightning_shirt.tres" id="4_p6jlq"]
+[ext_resource type="Resource" uid="uid://qorifd8ver4o" path="res://mods-unpacked/koral-pacelover/pacelover_goggles.tres" id="8_50tap"]
+[ext_resource type="Resource" uid="uid://bwxfj27xigkbs" path="res://mods-unpacked/koral-pacelover/pacelover_boost.tres" id="9_2mh28"]
+[ext_resource type="Script" uid="uid://combwqypom1ru" path="res://objects/items/classes/item.gd" id="9_t8yrd"]
+
+[sub_resource type="Resource" id="Resource_jj61k"]
+script = ExtResource("1_vg416")
+damage = 1.0
+defense = 0.75
+evasiveness = 1.0
+accuracy = 1.0
+speed = 1.0
+max_turns = 4
+max_hp = 25
+hp = 25
+turns = 2
+
+[sub_resource type="Resource" id="Resource_ax4gq"]
+script = ExtResource("1_4idkh")
+body_type = 1
+species = 2
+head_index = 2
+eyelashes = false
+skirt = false
+head_color = Color(0.754934, 0.14093, 0.112187, 1)
+torso_color = Color(0.756863, 0.141176, 0.113725, 1)
+leg_color = Color(0.756863, 0.141176, 0.113725, 1)
+shirt = ExtResource("4_p6jlq")
+bottoms = ExtResource("2_lpmsa")
+
+[resource]
+script = ExtResource("1_joak5")
+character_name = "pacelover2000"
+character_summary = "- he loves pace so much (many stat changes) 
+- everything gets a bit faster every turn
+- end turn early for a 1.2x damage boost
+- use every purple gag for a 1.2x defense boost
+- use a red (banned) gag for a defense debuff
+"
+dna = SubResource("Resource_ax4gq")
+gag_loadout = ExtResource("2_pvta8")
+starting_laff = 15
+starting_items = Array[ExtResource("9_t8yrd")]([ExtResource("8_50tap"), ExtResource("9_2mh28")])
+base_stats = SubResource("Resource_jj61k")
+random_character_stored_name = ""

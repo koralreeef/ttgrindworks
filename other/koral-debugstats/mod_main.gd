@@ -11,8 +11,8 @@ extends Node
 
 # ? This mod adds a stats panel to the gui
 
-const MOD_DIR := "koral-pacelover" # Name of the directory that this file is in
-const LOG_NAME := "koral-pacelover:Main" # Full ID of the mod (AuthorName-ModName)
+const MOD_DIR := "koral-debugstats" # Name of the directory that this file is in
+const LOG_NAME := "koral-debugstats:Main" # Full ID of the mod (AuthorName-ModName)
 
 var mod_dir_path := ""
 var extensions_dir_path := ""
@@ -33,11 +33,15 @@ func _init() -> void:
 	
 
 func install_script_extensions() -> void:
+	# ! any script extensions should go in this directory, and should follow the same directory structure as vanilla
 	extensions_dir_path = mod_dir_path.path_join("extensions")
-	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("objects/battle/misc_battle_objects/timer/battle_timer.gd"))
+	# ? This will install the script extension into the settings menu
+	return    
 
 func install_script_hook_files() -> void:
 	extensions_dir_path = mod_dir_path.path_join("extensions")
+	# ? This will install the script hook file into the settings file
+	return
 
 func add_translations() -> void:
 	return
@@ -55,12 +59,13 @@ func add_translations() -> void:
 func _ready() -> void:
 	ModLoaderLog.info("Ready", LOG_NAME)
 
-	var character : PlayerCharacter = load("res://mods-unpacked/koral-pacelover/pacelover.tres")
-	CustomToonRegistry.CUSTOM_TOONS.append(character)
-	CustomToonRegistry.CUSTOM_TOON_SETUPS[character.character_name] = Callable(self, "pacelover2000")
-	print("Added pacelover2000 to CustomToonRegistry")
-
-func pacelover2000(player: Player):
-	for track in player.stats.gags_unlocked.keys():
-		player.stats.gags_unlocked[track] = 1
-	player.stats.luck = 1.10
+	# ! This uses Godot's native `tr` func, which translates a string. You'll
+	# ! find this particular string in the example CSV here: translations/modname.csv
+	# ModLoaderLog.info("Translation Demo: " + tr("MODNAME_READY_TEXT"), LOG_NAME)
+	# Load debug stats script
+	var debug_stats_script = load(mod_dir_path.path_join("debug_stats.gd"))
+	if debug_stats_script:
+		var debug_stats = debug_stats_script.new()
+		add_child(debug_stats)
+		debug_stats.show()
+	

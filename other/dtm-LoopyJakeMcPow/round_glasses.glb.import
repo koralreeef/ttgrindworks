@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bdw8sdxiehyav"
-path="res://.godot/imported/round_glasses.glb-26c51e17d806f2c22e3ab1096c99c4eb.scn"
+path="res://.godot/imported/round_glasses.glb-7fdc53f5c3b6c9e424fb456f88ff8c8a.scn"
 
 [deps]
 
-source_file="res://mods-unpacked/dtm-LoopyJakeMcPow/round_glasses.glb"
-dest_files=["res://.godot/imported/round_glasses.glb-26c51e17d806f2c22e3ab1096c99c4eb.scn"]
+source_file="res://other/dtm-LoopyJakeMcPow/round_glasses.glb"
+dest_files=["res://.godot/imported/round_glasses.glb-7fdc53f5c3b6c9e424fb456f88ff8c8a.scn"]
 
 [params]
 
