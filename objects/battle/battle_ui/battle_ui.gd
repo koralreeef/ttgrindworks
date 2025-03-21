@@ -72,6 +72,9 @@ func gag_selected(gag: BattleAction) -> void:
 				%TargetSelect.show()
 				%TargetSelect.gag = gag
 				%TargetSelect.reposition_buttons(get_parent().cogs.size())
+				%TargetSelect.rotation = main_container.rotation * 0.1
+				%TargetSelect.position.x = main_container.position.x
+				%TargetSelect.position.y = main_container.position.y
 				main_container.hide()
 				var selection = await $TargetSelect.s_arrow_pressed
 				if selection == -1:

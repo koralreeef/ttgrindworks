@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://chtdvbuf0ivvt"]
+[gd_scene load_steps=39 format=3 uid="uid://chtdvbuf0ivvt"]
 
 [ext_resource type="PackedScene" uid="uid://cv2afui5p28af" path="res://objects/modules/mint/base_rooms/mint_diamond_room.tscn" id="1_h2rqk"]
 [ext_resource type="PackedScene" uid="uid://direah3lbjuu5" path="res://objects/battle/battle_node/battle_node.tscn" id="2_alx7d"]
@@ -24,8 +24,6 @@
 [ext_resource type="Resource" uid="uid://bi4y4a3o4dqma" path="res://objects/items/resources/accessories/glasses/goggles.tres" id="20_1xuw6"]
 [ext_resource type="Resource" uid="uid://drwl5ioujabov" path="res://objects/items/resources/passive/pacelover_boost.tres" id="21_66vty"]
 [ext_resource type="PackedScene" uid="uid://dxyq5lb5oineo" path="res://objects/interactables/treasure_chest/treasure_chest.tscn" id="23_16xtn"]
-[ext_resource type="Resource" uid="uid://ba7mgoe7i5oq4" path="res://objects/items/resources/accessories/backpacks/gag_pack.tres" id="24_1xuw6"]
-[ext_resource type="Resource" uid="uid://divycml3lyvqr" path="res://objects/items/resources/accessories/hats/detective_hat.tres" id="25_66vty"]
 [ext_resource type="Resource" uid="uid://b4pssn72ke7uu" path="res://objects/items/resources/accessories/glasses/heart_glasses.tres" id="26_ouruu"]
 [ext_resource type="Resource" uid="uid://c3sjb3vivkvux" path="res://objects/items/resources/passive/laff_boost.tres" id="27_4p2an"]
 [ext_resource type="Resource" uid="uid://dwo2a46e1wwew" path="res://objects/items/resources/accessories/hats/fedora.tres" id="28_qncha"]
@@ -94,14 +92,14 @@ character_summary = "- Can revive once before going sad
 dna = SubResource("Resource_h5kab")
 gag_loadout = SubResource("Resource_s4oci")
 starting_laff = 25
-starting_items = Array[ExtResource("14_7upve")]([ExtResource("20_1xuw6"), ExtResource("21_66vty")])
+starting_items = Array[ExtResource("14_7upve")]([])
 base_stats = SubResource("Resource_4yraj")
 random_character_stored_name = ""
 
 [sub_resource type="Resource" id="Resource_vs51t"]
 script = ExtResource("17_8fcps")
 money = 30
-items = Array[ExtResource("14_7upve")]([])
+items = Array[ExtResource("14_7upve")]([ExtResource("21_66vty"), ExtResource("20_1xuw6")])
 gags_unlocked = Dictionary[String, int]({
 "Drop": 7,
 "Lure": 7,
@@ -233,11 +231,11 @@ stats = SubResource("Resource_vs51t")
 
 [node name="treasure_chest" parent="." instance=ExtResource("23_16xtn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0877, 0, -5.41882)
-override_item = ExtResource("24_1xuw6")
+override_item = ExtResource("20_1xuw6")
 
 [node name="treasure_chest2" parent="." instance=ExtResource("23_16xtn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9695, 0, -5.41882)
-override_item = ExtResource("25_66vty")
+override_item = ExtResource("21_66vty")
 
 [node name="treasure_chest3" parent="." instance=ExtResource("23_16xtn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5301, 0, -5.41882)

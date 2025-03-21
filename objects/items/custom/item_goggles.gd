@@ -5,6 +5,7 @@ extends ItemScript
 const pace_multi := 0.965
 var ROUND_TIME := 10.0
 var THIS_ROUND_TIME = ROUND_TIME
+var epic
 var spin := true
 const TIMER_ANCHOR := Control.PRESET_TOP_RIGHT
 const SFX_TIMER = preload("res://audio/sfx/objects/moles/MG_sfx_travel_game_bell_for_trolley.ogg")
@@ -30,6 +31,7 @@ func on_battle_start(manager: BattleManager) -> void:
 
 func initialize_ui(manager: BattleManager) -> void:
 	var ui := manager.battle_ui
+	epic = manager.battle_ui
 	main = manager.battle_ui.main_container.position
 	for element: Control in ui.gag_tracks.get_children():
 		element.s_refreshing.connect(on_track_refresh)
@@ -41,6 +43,12 @@ func initialize_ui(manager: BattleManager) -> void:
 
 ## Shuffles the gag order of each track
 func on_track_refresh(element: Control) -> void:
+	var coin = RandomService.randf_channel('true_random') * 10
+	if coin > 5:
+		epic.main_container.rotation = RandomService.randf_channel('true_random') * 30.0
+	else: 
+		epic.main_container.rotation = RandomService.randf_channel('true_random') * -30.0
+	epic.cog_panels.rotation = RandomService.randf_channel('true_random') * 1.0
 	var unlocked: int = element.unlocked
 	if unlocked > 0:
 		element.gags = element.gags.slice(0,unlocked)
@@ -48,19 +56,22 @@ func on_track_refresh(element: Control) -> void:
 
 ## Runs the battle timer at the beginning of each round
 func on_round_reset(manager: BattleManager) -> void:
+	# Hell on earth
 	manager.battle_ui.main_container.rotation = RandomService.randf_channel('true_random') * 30.0
 	manager.battle_ui.main_container.position.x = main.x + RandomService.randf_channel('true_random') * 30.0
 	manager.battle_ui.main_container.position.y = main.y + RandomService.randf_channel('true_random') * 30.0
 	manager.battle_ui.gag_tracks.rotation = RandomService.randf_channel('true_random') * 1.0
+	manager.battle_ui.cog_panels.rotation = RandomService.randf_channel('true_random') * 1.0
 	var player = Util.get_player()
 	if player.character.character_name == "pacelover2000":
 		# THIS_ROUND_TIME = Util.get_player().stats.remaining_time
-		THIS_ROUND_TIME = 10000
+		THIS_ROUND_TIME = 30
 	timer = Util.run_timer(THIS_ROUND_TIME, TIMER_ANCHOR)
 	timer.timer.timeout.connect(on_timeout.bind(manager.battle_ui))
 	timer.reparent(manager.battle_ui)
 	if manager.cogs.size() > 0:
 		AudioManager.play_sound(SFX_TIMER)
+	epic = manager.battle_ui
 
 func on_timeout(ui: BattleUI) -> void:
 	# Good way to tell if round isn't over is if the UI is still visible
