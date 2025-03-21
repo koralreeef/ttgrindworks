@@ -1550,6 +1550,7 @@ custom_minimum_size = Vector2(160, 100)
 layout_mode = 0
 offset_right = 160.0
 offset_bottom = 100.0
+mouse_filter = 2
 texture = ExtResource("1_1tuon")
 expand_mode = 1
 

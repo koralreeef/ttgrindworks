@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=12 format=3 uid="uid://cb81gtgjf1hpi"]
+[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=12 format=3 uid="uid://relxqb0aci3u"]
 
 [ext_resource type="Script" uid="uid://yg7gxug4rab" path="res://objects/toon/toon_dna.gd" id="1_4idkh"]
 [ext_resource type="Script" uid="uid://ts8xpgftpmty" path="res://objects/player/character.gd" id="1_joak5"]
@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cpg3x6cg4fvrw" path="res://objects/toon/clothing/shorts/denim_shorts.tres" id="2_lpmsa"]
 [ext_resource type="Resource" uid="uid://tyi7ukxtvcgc" path="res://objects/battle/battle_resources/gag_loadouts/loadouts/standard_loadout.tres" id="2_pvta8"]
 [ext_resource type="Resource" uid="uid://8fdqrfrfgdmt" path="res://objects/toon/clothing/shirts/lightning_shirt.tres" id="4_p6jlq"]
-[ext_resource type="Resource" uid="uid://cebtk3ovtrhfs" path="res://objects/items/resources/passive/pacelover_boost.tres" id="9_r07dh"]
+[ext_resource type="Resource" uid="uid://drwl5ioujabov" path="res://objects/items/resources/passive/pacelover_boost.tres" id="9_r07dh"]
 [ext_resource type="Script" uid="uid://combwqypom1ru" path="res://objects/items/classes/item.gd" id="9_t8yrd"]
 [ext_resource type="Resource" uid="uid://bi4y4a3o4dqma" path="res://objects/items/resources/accessories/glasses/goggles.tres" id="11_j65st"]
 

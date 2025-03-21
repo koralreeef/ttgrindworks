@@ -1,11 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://chtdvbuf0ivvt"]
+[gd_scene load_steps=41 format=3 uid="uid://chtdvbuf0ivvt"]
 
 [ext_resource type="PackedScene" uid="uid://cv2afui5p28af" path="res://objects/modules/mint/base_rooms/mint_diamond_room.tscn" id="1_h2rqk"]
 [ext_resource type="PackedScene" uid="uid://direah3lbjuu5" path="res://objects/battle/battle_node/battle_node.tscn" id="2_alx7d"]
 [ext_resource type="PackedScene" uid="uid://dflwjcy6fj0av" path="res://objects/cog/cog.tscn" id="3_okjj0"]
-[ext_resource type="PackedScene" uid="uid://babag0m5ugnyx" path="res://objects/player/player.tscn" id="4_fefq8"]
 [ext_resource type="Resource" uid="uid://cdnhms1ktp5l3" path="res://objects/cog/presets/sellbot/rainbow_hander.tres" id="4_16xtn"]
-[ext_resource type="PackedScene" uid="uid://wpoc3xs1yy0" path="res://objects/player/player.tscn" id="4_fefq8"]
+[ext_resource type="PackedScene" uid="uid://babag0m5ugnyx" path="res://objects/player/player.tscn" id="4_fefq8"]
 [ext_resource type="Script" uid="uid://o2fe7ud1faj6" path="res://objects/battle/battle_resources/stats.gd" id="5_wgpvb"]
 [ext_resource type="Script" uid="uid://c8kas2j4io1jh" path="res://objects/toon/clothing/toon_bottoms.gd" id="6_sp5d7"]
 [ext_resource type="Script" uid="uid://yg7gxug4rab" path="res://objects/toon/toon_dna.gd" id="7_42kli"]
@@ -17,12 +16,13 @@
 [ext_resource type="Resource" uid="uid://cvaos6ucteefy" path="res://objects/battle/battle_resources/gag_loadouts/gag_tracks/sound.tres" id="13_eed60"]
 [ext_resource type="Script" uid="uid://combwqypom1ru" path="res://objects/items/classes/item.gd" id="14_7upve"]
 [ext_resource type="Resource" uid="uid://0528viy6hdsv" path="res://objects/battle/battle_resources/gag_loadouts/gag_tracks/throw.tres" id="14_ww67o"]
-[ext_resource type="Resource" uid="uid://cyiwxplege133" path="res://objects/items/resources/passive/emergency_unite.tres" id="15_8ctgi"]
 [ext_resource type="Resource" uid="uid://dvxiqtapdvmj4" path="res://objects/battle/battle_resources/gag_loadouts/gag_tracks/squirt.tres" id="15_h0hwy"]
 [ext_resource type="Resource" uid="uid://lf7h5xkbt2op" path="res://objects/battle/battle_resources/gag_loadouts/gag_tracks/drop.tres" id="16_diqeu"]
 [ext_resource type="Script" uid="uid://dfa2ic7ngy7sg" path="res://objects/quests/quest.gd" id="16_qov7a"]
 [ext_resource type="Script" uid="uid://b68uqtpqs73wk" path="res://objects/player/player_stats.gd" id="17_8fcps"]
 [ext_resource type="Script" uid="uid://ckypnf7t805p3" path="res://objects/battle/battle_resources/gag_loadouts/gag_loadout.gd" id="17_aepo7"]
+[ext_resource type="Resource" uid="uid://bi4y4a3o4dqma" path="res://objects/items/resources/accessories/glasses/goggles.tres" id="20_1xuw6"]
+[ext_resource type="Resource" uid="uid://drwl5ioujabov" path="res://objects/items/resources/passive/pacelover_boost.tres" id="21_66vty"]
 [ext_resource type="PackedScene" uid="uid://dxyq5lb5oineo" path="res://objects/interactables/treasure_chest/treasure_chest.tscn" id="23_16xtn"]
 [ext_resource type="Resource" uid="uid://ba7mgoe7i5oq4" path="res://objects/items/resources/accessories/backpacks/gag_pack.tres" id="24_1xuw6"]
 [ext_resource type="Resource" uid="uid://divycml3lyvqr" path="res://objects/items/resources/accessories/hats/detective_hat.tres" id="25_66vty"]
@@ -87,14 +87,14 @@ loadout = Array[ExtResource("9_4i7n6")]([ExtResource("11_hy8sk"), ExtResource("1
 
 [sub_resource type="Resource" id="Resource_br8l0"]
 script = ExtResource("13_d0tkq")
-character_name = "Flippy"
+character_name = "pacelover2000"
 character_summary = "- Can revive once before going sad
 - 5% base Throw boost
 - Starts with Toon-Up and Throw"
 dna = SubResource("Resource_h5kab")
 gag_loadout = SubResource("Resource_s4oci")
 starting_laff = 25
-starting_items = Array[ExtResource("14_7upve")]([ExtResource("15_8ctgi")])
+starting_items = Array[ExtResource("14_7upve")]([ExtResource("20_1xuw6"), ExtResource("21_66vty")])
 base_stats = SubResource("Resource_4yraj")
 random_character_stored_name = ""
 

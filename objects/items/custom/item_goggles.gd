@@ -5,10 +5,10 @@ extends ItemScript
 const pace_multi := 0.965
 var ROUND_TIME := 10.0
 var THIS_ROUND_TIME = ROUND_TIME
-
+var spin := true
 const TIMER_ANCHOR := Control.PRESET_TOP_RIGHT
 const SFX_TIMER = preload("res://audio/sfx/objects/moles/MG_sfx_travel_game_bell_for_trolley.ogg")
-
+var main
 ## Battle Timer created by Util
 var timer: GameTimer
 var loadout : GagLoadout
@@ -30,6 +30,7 @@ func on_battle_start(manager: BattleManager) -> void:
 
 func initialize_ui(manager: BattleManager) -> void:
 	var ui := manager.battle_ui
+	main = manager.battle_ui.main_container.position
 	for element: Control in ui.gag_tracks.get_children():
 		element.s_refreshing.connect(on_track_refresh)
 		element.refresh()
@@ -47,9 +48,14 @@ func on_track_refresh(element: Control) -> void:
 
 ## Runs the battle timer at the beginning of each round
 func on_round_reset(manager: BattleManager) -> void:
+	manager.battle_ui.main_container.rotation = RandomService.randf_channel('true_random') * 30.0
+	manager.battle_ui.main_container.position.x = main.x + RandomService.randf_channel('true_random') * 30.0
+	manager.battle_ui.main_container.position.y = main.y + RandomService.randf_channel('true_random') * 30.0
+	manager.battle_ui.gag_tracks.rotation = RandomService.randf_channel('true_random') * 1.0
 	var player = Util.get_player()
 	if player.character.character_name == "pacelover2000":
-		THIS_ROUND_TIME = Util.get_player().stats.remaining_time
+		# THIS_ROUND_TIME = Util.get_player().stats.remaining_time
+		THIS_ROUND_TIME = 10000
 	timer = Util.run_timer(THIS_ROUND_TIME, TIMER_ANCHOR)
 	timer.timer.timeout.connect(on_timeout.bind(manager.battle_ui))
 	timer.reparent(manager.battle_ui)

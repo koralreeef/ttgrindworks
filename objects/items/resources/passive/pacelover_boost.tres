@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cebtk3ovtrhfs"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://drwl5ioujabov"]
 
-[ext_resource type="Script" uid="uid://dyilgnhv6w234" path="res://objects/items/custom/item_pacelover_boost.gd" id="1_mgaqa"]
+[ext_resource type="Script" path="res://objects/items/custom/item_pacelover_boost.gd" id="1_mgaqa"]
 [ext_resource type="Script" uid="uid://combwqypom1ru" path="res://objects/items/classes/item.gd" id="2_5wtyg"]
 
 [resource]
