@@ -27,33 +27,35 @@ func setup() -> void:
 ## Connect the gag track elements up to be shuffled
 func on_battle_start(manager: BattleManager) -> void:
 	await manager.s_ui_initialized
-	initialize_ui(manager)
+	epic = manager
+	initialize_ui(epic)
 
 func initialize_ui(manager: BattleManager) -> void:
 	var ui := manager.battle_ui
-	epic = manager.battle_ui
 	main = manager.battle_ui.main_container.position
-	for element: Control in ui.gag_tracks.get_children():
+	for element: Control in epic.battle_ui.gag_tracks.get_children():
 		element.s_refreshing.connect(on_track_refresh)
 		element.refresh()
-	
+		
 	# Also run the round reset method for this first round
 	on_round_reset(manager)
 	ui.s_turn_complete.connect(on_turn_complete)
 
 ## Shuffles the gag order of each track
 func on_track_refresh(element: Control) -> void:
-	var coin = RandomService.randf_channel('true_random') * 10
-	if coin > 5:
-		epic.main_container.rotation = RandomService.randf_channel('true_random') * 30.0
-	else: 
-		epic.main_container.rotation = RandomService.randf_channel('true_random') * -30.0
-	epic.cog_panels.rotation = RandomService.randf_channel('true_random') * 1.0
 	var unlocked: int = element.unlocked
 	if unlocked > 0:
 		element.gags = element.gags.slice(0,unlocked)
 		element.gags.shuffle()
-
+	
+func on_ui_refresh() -> void:
+	var coin = RandomService.randf_channel('true_random') * 10
+	if coin > 5:
+		epic.battle_ui.main_container.rotation = RandomService.randf_channel('true_random') * 30.0
+	else: 
+		epic.battle_ui.main_container.rotation = RandomService.randf_channel('true_random') * -30.0
+	epic.battle_ui.cog_panels.rotation = RandomService.randf_channel('true_random') * 1.0
+		
 ## Runs the battle timer at the beginning of each round
 func on_round_reset(manager: BattleManager) -> void:
 	# Hell on earth
@@ -71,7 +73,6 @@ func on_round_reset(manager: BattleManager) -> void:
 	timer.reparent(manager.battle_ui)
 	if manager.cogs.size() > 0:
 		AudioManager.play_sound(SFX_TIMER)
-	epic = manager.battle_ui
 
 func on_timeout(ui: BattleUI) -> void:
 	# Good way to tell if round isn't over is if the UI is still visible
