@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwbrfurvn1obt"]
+[gd_scene load_steps=5 format=3 uid="uid://dp0byxhi5geon"]
 
-[ext_resource type="Script" path="res://objects/player/ui/timer/game_timer.gd" id="1_t6q2t"]
+[ext_resource type="Script" uid="uid://dqxltut4qssyo" path="res://objects/player/ui/timer/game_timer.gd" id="1_t6q2t"]
 [ext_resource type="FontFile" uid="uid://815gwlftl5ik" path="res://fonts/impress-bt.ttf" id="2_0mge7"]
-[ext_resource type="Script" path="res://objects/player/stats_debug.gd" id="3_jeen3"]
+[ext_resource type="Script" uid="uid://urhl7jtru38v" path="res://objects/player/stats_debug.gd" id="3_jeen3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ndimm"]
 resource_local_to_scene = true

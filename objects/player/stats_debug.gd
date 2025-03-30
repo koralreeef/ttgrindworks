@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 		else:
 			damage = player.stats.damage
 			defense = player.stats.defense
-			evasiveness = player.stats.defense
+			evasiveness = player.stats.evasiveness
 			luck = player.stats.luck
 		squirt = player.stats.gags_unlocked["Squirt"]
 		trap = player.stats.gags_unlocked["Trap"]
